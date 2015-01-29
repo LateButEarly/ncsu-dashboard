@@ -2,6 +2,18 @@ ncsu-dashboard [![Build Status](https://travis-ci.org/irkanu/ncsu-dashboard.svg)
 ===
 A moodle-esque student dashboard built on the MEAN stack.
 
+# Prerequisites
+* NodeJS & npm - http://nodejs.org/download/
+* MongoDB - https://www.mongodb.org/downloads/
+* Bower
+```
+$ npm install -g bower
+```
+* Grunt
+```
+$ npm install -g grunt-cli
+```
+
 # Installation
 It's easy to install dependencies.
 ```
