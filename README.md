@@ -3,5 +3,14 @@ ncsu-dashboard [![Build Status](https://travis-ci.org/irkanu/ncsu-dashboard.svg)
 A moodle-esque student dashboard built on the MEAN stack.
 
 # Installation
+It's easy to install dependencies.
 ```
 $ npm install
+```
+
+Start your engines!
+```
+$ grunt
+```
+
+:tada:
