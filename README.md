@@ -50,7 +50,7 @@ $ grunt
   - [ ] Classes (CRUD)
     - [ ] Assignments (CRUD)
       - [ ] Documents (Read-only)
-      - [ ] Feeback (CRUD)
+      - [ ] Feedback (CRUD)
     - [ ] Exams (CRUD)
     - [ ] Quizzes (CRUD)
     - [ ] Notices (CRUD)
