@@ -1,4 +1,4 @@
-noodle [![Build Status](https://travis-ci.org/irkanu/ncsu-dashboard.svg)](https://travis-ci.org/irkanu/ncsu-dashboard) [![Code Climate](https://codeclimate.com/repos/54c99940e30ba05bf4000783/badges/cbb3becb98fe8367dff2/gpa.svg)](https://codeclimate.com/repos/54c99940e30ba05bf4000783/feed)
+noodle [![Build Status](https://magnum.travis-ci.com/irkanu/ncsu-dashboard.svg?token=sPbR4o8U5FttM1ByqDzC)](https://magnum.travis-ci.com/irkanu/ncsu-dashboard) [![Code Climate](https://codeclimate.com/repos/54c99940e30ba05bf4000783/badges/cbb3becb98fe8367dff2/gpa.svg)](https://codeclimate.com/repos/54c99940e30ba05bf4000783/feed)
 ===
 The "new moodle."
 A moodle-esque student dashboard built on the MEAN stack.
