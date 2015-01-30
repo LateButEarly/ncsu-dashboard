@@ -1,5 +1,6 @@
-ncsu-dashboard [![Build Status](https://travis-ci.org/irkanu/ncsu-dashboard.svg)](https://travis-ci.org/irkanu/ncsu-dashboard) [![Code Climate](https://codeclimate.com/repos/54c99940e30ba05bf4000783/badges/cbb3becb98fe8367dff2/gpa.svg)](https://codeclimate.com/repos/54c99940e30ba05bf4000783/feed)
+noodle [![Build Status](https://travis-ci.org/irkanu/ncsu-dashboard.svg)](https://travis-ci.org/irkanu/ncsu-dashboard) [![Code Climate](https://codeclimate.com/repos/54c99940e30ba05bf4000783/badges/cbb3becb98fe8367dff2/gpa.svg)](https://codeclimate.com/repos/54c99940e30ba05bf4000783/feed)
 ===
+The "new moodle."
 A moodle-esque student dashboard built on the MEAN stack.
 
 # Prerequisites
@@ -26,3 +27,33 @@ $ grunt
 ```
 
 :tada:
+
+
+# Todo
+- [x] User Authentication
+  - [ ] User Roles
+
+- [ ] Student Dashboard
+  - [ ] Breadcrumbs
+  - [ ] Events (CRUD)
+    - [ ] Comments (CRUD)
+  - [ ] Blog (CRUD)
+    - [ ] Comments (CRUD)
+  - [ ] Classes (Read-only)
+    - [ ] Assignments (Read & Update)
+      - [ ] Upload Documents (CRUD)
+      - [ ] Feedback (Read-only)
+    - [ ] Exams (Read & Update)
+    - [ ] Quizzes (Read & Update)
+    - [ ] Notices (Read-only)
+- [ ] Teacher Dashboard
+  - [ ] Classes (CRUD)
+    - [ ] Assignments (CRUD)
+      - [ ] Documents (Read-only)
+      - [ ] Feeback (CRUD)
+    - [ ] Exams (CRUD)
+    - [ ] Quizzes (CRUD)
+    - [ ] Notices (CRUD)
+- [ ] Admin
+  - [ ] Do it all.
+  
