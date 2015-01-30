@@ -34,7 +34,7 @@ $ grunt
   - [ ] User Roles
 
 - [ ] Student Dashboard
-  - [ ] Breadcrumbs
+  - [x] Breadcrumbs
   - [ ] Events (CRUD)
     - [ ] Comments (CRUD)
   - [ ] Blog (CRUD)
