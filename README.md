@@ -46,6 +46,7 @@ $ grunt
     - [ ] Exams (Read & Update)
     - [ ] Quizzes (Read & Update)
     - [ ] Notices (Read-only)
+
 - [ ] Teacher Dashboard
   - [ ] Classes (CRUD)
     - [ ] Assignments (CRUD)
@@ -54,6 +55,7 @@ $ grunt
     - [ ] Exams (CRUD)
     - [ ] Quizzes (CRUD)
     - [ ] Notices (CRUD)
+
 - [ ] Admin
   - [ ] Do it all.
   

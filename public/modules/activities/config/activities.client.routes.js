@@ -35,9 +35,14 @@ angular.module('activities').config(['$stateProvider',
 		}).
 		state('editActivity', {
 			url: '/activities/:activityId/edit',
+                controller: function($scope, Activities, $stateParams) {
+                    $scope.activity = $scope.activity = Activities.get({
+                        activityId: $stateParams.activityId
+                    });
+                },
                 ncyBreadcrumb: {
                     parent: 'viewActivity',
-                    label: 'Edit Activity'
+                    label: 'Edit {{activity.name}}'
                 },
 			templateUrl: 'modules/activities/views/edit-activity.client.view.html'
 		});

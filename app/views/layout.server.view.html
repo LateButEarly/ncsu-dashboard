@@ -870,6 +870,12 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
+        .lead-alternate {
+            font-family: "Glypha LT W01 55 Roman";
+            letter-spacing: 0.02em;
+            font-size: 1.65em;
+            line-height: 1.3;
+        }
     </style>
 
 	<!-- HTML5 Shim -->
@@ -879,8 +885,8 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-default navbar-static-top"></header>
-	<section class="content">
+	<header data-ng-include="'/modules/core/views/header.client.view.html'" style="margin-bottom:0!important;padding: 15px;" class="navbar navbar-default navbar-static-top"></header>
+	<section class="">
 		<section class="container">
 			{% block content %}{% endblock %}
 		</section>
