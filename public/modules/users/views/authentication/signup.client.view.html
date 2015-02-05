@@ -3,6 +3,10 @@
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal form-signin" novalidate autocomplete="off">
             <h2 class="form-signin-heading">Register</h2>
 			<fieldset>
+                <div class="form-group">
+                    <label for="studentID" class="sr-only">Student ID</label>
+                    <input type="text" id="studentID" name="studentID" class="form-control" data-ng-model="credentials.studentID" placeholder="Student ID">
+                </div>
 				<div class="form-group">
 					<label for="firstName" class="sr-only">First Name</label>
 					<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
@@ -23,10 +27,9 @@
 					<label for="password" class="sr-only">Password</label>
 					<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
 				</div>
-                <!-- TODO: Temporary Role Handling -->
                 <div class="form-group">
                     <label for="role" class="sr-only">Role</label>
-                    <input type="text" id="role" name="role" class="form-control" data-ng-model="credentials.role" placeholder="Role">
+                    <input type="role" id="role" name="role" class="form-control" data-ng-model="credentials.role" placeholder="Role">
                 </div>
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;

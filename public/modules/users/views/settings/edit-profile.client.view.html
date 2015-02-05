@@ -3,6 +3,11 @@
 	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
 		<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
 			<fieldset>
+                <!-- TODO: Make it look nicer! -->
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <p>{{ user.studentID }}</p>
+                </div>
 				<div class="form-group">
 					<label for="firstName">First Name</label>
 					<input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
@@ -16,12 +21,12 @@
 					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
 				</div>
 				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+					<label>Username</label>
+					<p>{{ user.username }}</p>
 				</div>
                 <div class="form-group">
-                    <label for="role">Role</label>
-                    <input type="text" id="role" name="role" class="form-control" data-ng-model="user.role" placeholder="Role">
+                    <label>Role</label>
+                    <p>{{ user.role }}</p>
                 </div>
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>

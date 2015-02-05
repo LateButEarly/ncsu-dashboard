@@ -25,6 +25,12 @@ var validateLocalStrategyPassword = function(password) {
  * User Schema
  */
 var UserSchema = new Schema({
+    studentID: {
+        type: String,
+        trim: true,
+        default: '',
+        validate: [validateLocalStrategyProperty, 'Please fill in your student ID']
+    },
 	firstName: {
 		type: String,
 		trim: true,
@@ -41,6 +47,12 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true
 	},
+    role: {
+        type: String,
+        trim: true,
+        default: 'student',
+        validate: [validateLocalStrategyProperty, 'Please fill in your role']
+    },
 	email: {
 		type: String,
 		trim: true,
