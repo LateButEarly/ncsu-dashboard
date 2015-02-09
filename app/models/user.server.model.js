@@ -58,6 +58,7 @@ var UserSchema = new Schema({
 		trim: true,
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your email'],
+        //TODO: Regex pattern to detect .edu email.
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
 	},
 	username: {
