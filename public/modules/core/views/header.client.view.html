@@ -46,7 +46,7 @@
 					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
 				</a>
 				<ul class="dropdown-menu">
-                    <li data-ng-show="authentication.user.role === 'teacher'">
+                    <li data-ng-show="authentication.user.role === 'teacher' || authentication.user.role === 'admin'">
                         <a href="/#!/courses/create">New Course</a>
                     </li>
 					<li>
