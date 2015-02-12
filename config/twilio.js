@@ -16,6 +16,8 @@ module.exports = function() {
         authToken = '1dcfaa7d4151e6774dbf6ea6fb2faba4',
         client = require('twilio')(accountSid, authToken);
 
+    //iterate over all assignments and check if assignment due date is within 12 hours of nowDate()
+    //if true, fire text message and set alreadyReminded to true else, repeat every 30 minutes.
    function checkReminders () {
        var promise = client.messages.create({
            to:'+19194413402', // a number to call
