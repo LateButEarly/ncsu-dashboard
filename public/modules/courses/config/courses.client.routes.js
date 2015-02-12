@@ -5,9 +5,17 @@ angular.module('courses').config(['$stateProvider',
 	function($stateProvider) {
 		// Courses state routing
 		$stateProvider.
+        state('myDashboard', {
+                url: '/student-dashboard',
+                ncyBreadcrumb: {
+                    label: 'My Dashboard'
+                },
+                templateUrl: 'modules/users/views/student-dashboard.client.view.html'
+            }).
 		state('listCourses', {
 			url: '/courses',
                 ncyBreadcrumb: {
+                    parent: 'myDashboard',
                     label: 'My Courses'
                 },
 			templateUrl: 'modules/courses/views/list-courses.client.view.html'

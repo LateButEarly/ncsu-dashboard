@@ -1,0 +1,76 @@
+<script>
+    $(function () {
+        $('#menu').metisMenu();
+    });
+</script>
+
+<section data-ng-controller="StudentdashboardController">
+    <div>
+        <br>
+        <!-- TODO: Bind warning model to controller -->
+        <div class="alert alert-warning" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Warning: </strong>Classes are cancelled today!
+        </div>
+
+        <div class="container">
+            <aside class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="menu">
+                        <li data-ng-controller="CoursesController" data-ng-init="find()" class="active">
+                            <a href="#">
+                                <span class="sidebar-nav-item-icon"></span>
+                                <span class="sidebar-nav-item">My Courses</span>
+                                <span class="fa arrow"></span>
+                            </a>
+                            <ul>
+                                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name" data-ng-href="#!/courses/{{course._id}}"></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">My Clubs <span class="fa arrow"></span></a>
+                            <ul>
+                                <li><a href="#">item 0.1</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">My Activities <span class="fa arrow"></span></a>
+                            <ul>
+                                <li><a href="#">item 1.1</a></li>
+                                <li><a href="#">item 1.2</a></li>
+                                <li>
+                                    <a href="#">Menu 1.3 <span class="fa plus-times"></span></a>
+                                    <ul>
+                                        <li><a href="#">item 1.3.1</a></li>
+                                        <li><a href="#">item 1.3.2</a></li>
+                                        <li><a href="#">item 1.3.3</a></li>
+                                        <li><a href="#">item 1.3.4</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">item 1.4</a></li>
+                                <li>
+                                    <a href="#">Menu 1.5 <span class="fa plus-minus"></span></a>
+                                    <ul>
+                                        <li><a href="#">item 1.5.1</a></li>
+                                        <li><a href="#">item 1.5.2</a></li>
+                                        <li><a href="#">item 1.5.3</a></li>
+                                        <li><a href="#">item 1.5.4</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+           <!--             <li>
+                            <a href="#">Menu 2 <span class="glyphicon arrow"></span></a>
+                            <ul>
+                                <li><a href="#">item 2.1</a></li>
+                                <li><a href="#">item 2.2</a></li>
+                                <li><a href="#">item 2.3</a></li>
+                                <li><a href="#">item 2.4</a></li>
+                            </ul>
+                        </li>-->
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+    </div>
+</section>
