@@ -24,6 +24,12 @@ var CourseSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	}
+    /*
+    students: {
+        type: Schema.ObjectID,
+        ref: 'User'
+    }
+    */
 });
-
+/* TODO: Accept array of students from list.. ng-model -> explode students */
 mongoose.model('Course', CourseSchema);
