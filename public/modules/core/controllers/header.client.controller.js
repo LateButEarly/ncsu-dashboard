@@ -15,5 +15,27 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.$on('$stateChangeSuccess', function() {
 			$scope.isCollapsed = false;
 		});
+
+        switch($scope.authentication.user.role){
+                case 'student':
+                    $scope.dashboard = "student-dashboard";
+                    break;
+                case 'teacher':
+                    $scope.dashboard = "teacher-dashboard";
+                    break;
+                case 'admin':
+                    $scope.dashboard = "admin-dashboard";
+                    break;
+                default:
+                    $scope.dashboard = "";
+        }
+
+        /*
+            if ($scope.authentication.user.role === 'student'){
+                $scope.dashboard = "student-dashboard";
+            } else {
+                $scope.dashboard = "";
+            }
+            */
 	}
 ]);
