@@ -37,7 +37,7 @@ angular.module('courses').config(['$stateProvider',
                 },
                 ncyBreadcrumb: {
                     parent: 'listCourses',
-                    label: 'View {{course.name}}' //TODO: View activity.name
+                    label: 'View Course: {{course.name}}' //TODO: View activity.name
                 },
 			templateUrl: 'modules/courses/views/view-course.client.view.html'
 		}).
@@ -50,7 +50,7 @@ angular.module('courses').config(['$stateProvider',
                 },
                 ncyBreadcrumb: {
                     parent: 'viewCourse',
-                    label: 'Edit {{course.name}}' //TODO: View activity.name
+                    label: 'Edit Course: {{course.name}}' //TODO: View activity.name
                 },
 			templateUrl: 'modules/courses/views/edit-course.client.view.html'
 		});
