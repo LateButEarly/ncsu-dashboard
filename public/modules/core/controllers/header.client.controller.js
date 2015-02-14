@@ -16,6 +16,8 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 			$scope.isCollapsed = false;
 		});
 
+        // TODO: Store warning isHidden() state per user.
+
         switch($scope.authentication.user.role){
                 case 'student':
                     $scope.dashboard = "student-dashboard";
