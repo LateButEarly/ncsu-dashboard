@@ -31,6 +31,10 @@ var UserSchema = new Schema({
         default: '',
         validate: [validateLocalStrategyProperty, 'Please fill in your student ID']
     },
+    notification: {
+        type: Schema.ObjectId,
+        ref: 'Notification'
+    },
 	firstName: {
 		type: String,
 		trim: true,
