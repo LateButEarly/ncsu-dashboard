@@ -16,11 +16,10 @@
 			<span data-ng-bind="article.user.displayName"></span>
 		</em>
 	</small>
+
 	<div data-ng-bind-html="article.content"></div>
 
-    <div>
-        <p data-ng-bind="article.user.bio" class="text-muted"></p>
-    </div>
+    <div data-ng-bind="article.user.bio"></div>
 
     <div id="disqus_thread"></div>
     <script type="text/javascript">

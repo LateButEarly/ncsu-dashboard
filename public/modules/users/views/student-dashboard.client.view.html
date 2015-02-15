@@ -73,17 +73,19 @@
             <br/>
         <div data-ng-controller="NotificationsController" data-ng-init="find()">
             <!-- data-ng-repeat="notification in notifications"  -->
-            <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
+            <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type="" class="alert alert-warning" close="closeAlert($index)"></alert>
 
-                <!-- TODO: Bind notification status to each student.
+            <!--type {{notification.type}}
+            <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
+                 TODO: Bind notification status to each student.
                 <form data-ng-submit="dismissNotification()">
                     <button type="submit" value="Update" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </form>
+                <span data-ng-bind-html="notification.name"></span>
                 -->
 
-                <span data-ng-bind-html="notification.name"></span>
             </div>
-        </div>
+
             <div class="row">
                 <aside class="col-md-3">
                     <nav class="sidebar-nav">
@@ -131,14 +133,16 @@
                         <h2>My Feed</h2>
                         <hr>
                         <div class="row">
-                            <div class="col-xs-6 col-md-2">
-                                <a href="#" class="thumbnail">
-                                    <img src="http://placehold.it/64x64" alt="">
-                                </a>
+                            <div class="col-xs-6 col-md-12">
+                                <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club Meeting Minutes</h5>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
                             </div>
-                            <div class="col-xs-6 col-md-10">
-                                <h4 class="media-heading"><span class="label label-default">New</span> Technology Club Meeting Minutes</h4>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed vero.
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-12">
+                                <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales Process into Your Web Copy</h5>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
                             </div>
                         </div>
                     </div>
