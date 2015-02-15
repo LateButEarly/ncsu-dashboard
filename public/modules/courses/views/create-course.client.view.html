@@ -1,6 +1,8 @@
 <section data-ng-controller="CoursesController">
     <!-- ng-model [code,name,content] -->
 
+    <br/>
+
     <div ncy-breadcrumb></div>
 
     <div class="page-header">
@@ -22,9 +24,9 @@
                     </div>
                 </div>
                 <div class="form-group" ng-class="{ 'has-error': newCourse.content.$dirty && newCourse.content.$invalid }">
-                    <label class="control-label" for="content">Course Content</label>
+                    <label class="control-label" for="description">Course Description</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="content" ng-hide="course.isEditing === 'true'" id="content" class="form-control" placeholder="Content" required>
+                        <input type="text" data-ng-model="description" id="description" class="form-control" placeholder="Description" required>
                     </div>
                 </div>
                 <div class="form-group">

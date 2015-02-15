@@ -1,11 +1,6 @@
-<section data-ng-controller="CoursesController" data-ng-init="findOne()">
-
-    <br/>
-
-    <div ncy-breadcrumb></div>
-
+<section data-ng-controller="NotificationsController" data-ng-init="findOne()">
     <div class="page-header">
-        <h1>Edit Course</h1>
+        <h1>Edit Notification</h1>
     </div>
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
@@ -13,7 +8,7 @@
                 <div class="form-group">
                     <label class="control-label" for="name">Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="course.name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="notification.name" id="name" class="form-control" placeholder="Name" required>
                     </div>
                 </div>
                 <div class="form-group">

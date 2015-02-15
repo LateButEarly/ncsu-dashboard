@@ -1,17 +1,12 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
 
+    <br/>
+
     <div ncy-breadcrumb></div>
+
 <div class="col-sm-8">
 	<div class="page-header">
 		<h1 data-ng-bind="article.title"></h1>
-	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
-		<a class="btn btn-primary" ui-sref-opts="{reload: true}" href="/#!/articles/{{article._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i><span> Edit Article</span>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i><span> Delete Article</span>
-		</a>
 	</div>
 	<small>
 		<em class="text-muted">
@@ -21,7 +16,10 @@
 			<span data-ng-bind="article.user.displayName"></span>
 		</em>
 	</small>
-	<p class="lead" data-ng-bind-html="article.content"></p>
+
+	<div data-ng-bind-html="article.content"></div>
+
+    <div data-ng-bind="article.user.bio"></div>
 
     <div id="disqus_thread"></div>
     <script type="text/javascript">
@@ -38,8 +36,14 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
     <div class="col-sm-3 col-sm-offset-1">
-        <div class="sidebar-pane">
-            <h4>Test</h4>
+        <div data-ng-show="authentication.user._id == article.user._id" class="sidebar-pane">
+            <h4>Manage Article</h4>
+                <a class="btn btn-primary btn-block" ui-sref-opts="{reload: true}" href="/#!/articles/{{article._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i><span> Edit Article</span>
+                </a>
+                <a class="btn btn-primary btn-block" data-ng-click="remove();">
+                    <i class="glyphicon glyphicon-trash"></i><span> Delete Article</span>
+                </a>
         </div>
     </div>
 </section>

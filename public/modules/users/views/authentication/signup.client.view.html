@@ -1,3 +1,40 @@
+<!-- Inline Login Form Styles -->
+<style>
+    body {
+        background-color: #eee;
+    }
+
+    .form-signin {
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+    }
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+        margin-bottom: 10px;
+    }
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+    .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+    }
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+    .lead-alternate {
+        font-family: "Glypha LT W01 55 Roman";
+        letter-spacing: 0.02em;
+        font-size: 1.65em;
+        line-height: 1.3;
+    }
+</style>
 <section class="row" data-ng-controller="AuthenticationController">
 	<div class="container">
 		<form name="userForm" data-ng-submit="signup()" class="signin form-horizontal form-signin" novalidate autocomplete="off">

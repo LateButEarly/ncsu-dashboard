@@ -1,25 +1,35 @@
 <section data-ng-controller="CoursesController" data-ng-init="findOne()">
 
+    <br/>
+
     <div ncy-breadcrumb></div>
 
 	<div class="page-header">
 		<h1 data-ng-bind="course.name"></h1>
+        <!-- TODO: Do we want to check if authenticated user id is equal to course user id? -->
+        <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' && (authentication.user._id == course.user._id))">
+            <a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i> Edit Course
+            </a>
+        </div>
 	</div>
-    <!-- TODO: Do we want to check if authenticated user id is equal to course user id? -->
-	<div class="pull-right" data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' && (authentication.user._id == course.user._id))">
-		<a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
+
+<!--	<small>
 		<em class="text-muted">
 			Posted on
 			<span data-ng-bind="course.created | date:'mediumDate'"></span>
 			by
 			<span data-ng-bind="course.user.displayName"></span>
 		</em>
-	</small>
+	</small>-->
+
+    <!-- Angular UI Tab Directive -->
+    <tabset justified="true">
+        <tab heading="Announcements">Announcements</tab>
+        <tab heading="Calendar">Calendar</tab>
+        <tab heading="Projects">Projects</tab>
+        <tab heading="Syllabus">Syllabus Content</tab>
+        <tab heading="Textbook">Textbook Content</tab>
+    </tabset>
+
 </section>

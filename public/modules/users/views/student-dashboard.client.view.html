@@ -7,28 +7,91 @@
     .fc-header-left {display:none;}
     ul li:before {display:none;}
     .fc-button-today {display:none;}
+    .fc-day, .fc-sun, .fc-widget-content{min-height: 36px!important;}
+
+    .content {
+        display: block;
+        overflow: hidden;
+        width: auto;
+    }
+
+    .sidebar-nav {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        background-image: -webkit-linear-gradient(left, color-stop(#333333 10px), color-stop(#222222 10px));
+        background-image: linear-gradient(to right, #333333 10px, #222222 10px);
+        background-repeat: repeat-x;
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=1);
+    }
+    .sidebar-nav ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .sidebar-nav a,
+    .sidebar-nav a:hover,
+    .sidebar-nav a:focus,
+    .sidebar-nav a:active {
+        outline: none;
+    }
+    .sidebar-nav ul li,
+    .sidebar-nav ul a {
+        display: block;
+    }
+    .sidebar-nav ul a {
+        padding: 10px 20px;
+        color: #aaa;
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.05) inset;
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+    }
+    .sidebar-nav ul a:hover,
+    .sidebar-nav ul a:focus,
+    .sidebar-nav ul a:active {
+        color: #fff;
+        text-decoration: none;
+    }
+    .sidebar-nav ul ul a {
+        padding: 10px 30px;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .sidebar-nav ul ul a:hover,
+    .sidebar-nav ul ul a:focus,
+    .sidebar-nav ul ul a:active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    .sidebar-nav-item {
+        padding-left: 5px;
+    }
+    .sidebar-nav-item-icon {
+        padding-right: 5px;
+    }
+
 </style>
 
 <section data-ng-controller="StudentdashboardController">
+    <div class="container">
+            <br/>
+        <div data-ng-controller="NotificationsController" data-ng-init="find()">
+            <!-- data-ng-repeat="notification in notifications"  -->
+            <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type="" class="alert alert-warning" close="closeAlert($index)"></alert>
 
-        <br>
-        <!-- TODO: Bind warning model to controller -->
-        <div class="alert alert-warning" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning: </strong>Classes are cancelled today!
-        </div>
+            <!--type {{notification.type}}
+            <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
+                 TODO: Bind notification status to each student.
+                <form data-ng-submit="dismissNotification()">
+                    <button type="submit" value="Update" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </form>
+                <span data-ng-bind-html="notification.name"></span>
+                -->
 
-        <div class="container">
+            </div>
+
             <div class="row">
-                <aside class="sidebar">
+                <aside class="col-md-3">
                     <nav class="sidebar-nav">
                         <ul id="menu">
                             <li data-ng-controller="CoursesController" data-ng-init="find()" class="active">
-                                <a href="#">
-                                    <span class="sidebar-nav-item-icon"></span>
-                                    <span class="sidebar-nav-item">My Courses</span>
-                                    <span class="fa arrow"></span>
-                                </a>
+                                <a href="#">My Courses<span class="fa arrow"></span></a>
                                 <ul>
                                     <li data-ng-repeat="course in courses"><a data-ng-bind="course.name" data-ng-href="#!/courses/{{course._id}}"></a></li>
                                 </ul>
@@ -39,68 +102,59 @@
                                     <li data-ng-repeat="article in articles"><a data-ng-bind="article.title" data-ng-href="#!/articles/{{article._id}}"></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li data-ng-controller="ClubsController" data-ng-init="find()">
                                 <a href="#">My Clubs <span class="fa arrow"></span></a>
                                 <ul>
-                                    <li><a href="#">item 0.1</a></li>
+                                    <li data-ng-repeat="club in clubs"><a data-ng-bind="club.name" data-ng-href="#!/clubs/{{club._id}}"></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li data-ng-controller="ActivitiesController" data-ng-init="find()">
                                 <a href="#">My Activities <span class="fa arrow"></span></a>
                                 <ul>
-                                    <li><a href="#">item 1.1</a></li>
-                                    <li><a href="#">item 1.2</a></li>
-                                    <li>
-                                        <a href="#">Menu 1.3 <span class="fa plus-times"></span></a>
-                                        <ul>
-                                            <li><a href="#">item 1.3.1</a></li>
-                                            <li><a href="#">item 1.3.2</a></li>
-                                            <li><a href="#">item 1.3.3</a></li>
-                                            <li><a href="#">item 1.3.4</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">item 1.4</a></li>
-                                    <li>
-                                        <a href="#">Menu 1.5 <span class="fa plus-minus"></span></a>
-                                        <ul>
-                                            <li><a href="#">item 1.5.1</a></li>
-                                            <li><a href="#">item 1.5.2</a></li>
-                                            <li><a href="#">item 1.5.3</a></li>
-                                            <li><a href="#">item 1.5.4</a></li>
-                                        </ul>
-                                    </li>
+                                    <li data-ng-repeat="activity in activities"><a data-ng-bind="activity.name" data-ng-href="#!/activities/{{activity._id}}"></a></li>
                                 </ul>
                             </li>
-                            <!--
-                            <li>
-                                <a href="#">Menu 2 <span class="glyphicon arrow"></span></a>
-                                <ul>
-                                    <li><a href="#">item 2.1</a></li>
-                                    <li><a href="#">item 2.2</a></li>
-                                    <li><a href="#">item 2.3</a></li>
-                                    <li><a href="#">item 2.4</a></li>
-                                </ul>
-                            </li>-->
                         </ul>
                     </nav>
                 </aside>
 
-                <main class="col-md-6">
-                    <div class="well well-lg">
+                <main style="width: 47.3%!important;padding-right:30px!important;" class="col-md-5">
+                    <div style="margin-bottom:30px!important;" class="well well-lg">
                         <h2>Upcoming Assignments</h2>
                         <hr>
-
+                        <!-- TODO: NG Repeat over all assignments attached to student. -->
+                        <div class="row">
+                            <div class="col-md-2 text-center"><input type="checkbox" /></div>
+                            <div class="col-md-7"><p>Homework Assignment #3</p></div>
+                            <div class="col-md-3"><p>2/22/2015</p></div>
+                        </div>
                     </div>
-                    <div class="well well-lg">
+                    <div style="margin-bottom:30px!important;" class="well well-lg">
                         <h2>My Feed</h2>
                         <hr>
-
+                        <div class="row">
+                            <div class="col-xs-6 col-md-12">
+                                <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club Meeting Minutes</h5>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-xs-6 col-md-12">
+                                <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales Process into Your Web Copy</h5>
+                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
+                            </div>
+                        </div>
                     </div>
                 </main>
 
-                <aside class="col-md-3">
-
+                <aside style="width:310px;float: left;">
+                    <div style="min-height:290px;">
+                        <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    </div>
+<!--
                     <div ui-calendar="uiConfig.calendar" data-ng-model="eventSources"></div>
+-->
                 </aside>
             </div>
         </div>

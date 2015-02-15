@@ -24,8 +24,20 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 
-				// And redirect to the index page
-				$location.path('/');
+                // take them to the dashboard
+                switch($scope.authentication.user.role){
+                    case 'student':
+                        $location.path('/student-dashboard');
+                        break;
+                    case 'teacher':
+                        $location.path('/teacher-dashboard');
+                        break;
+                    case 'admin':
+                        $location.path('/admin-dashboard');
+                        break;
+                    default:
+                        $location.path('/');
+                }
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
