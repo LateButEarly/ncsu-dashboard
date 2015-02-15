@@ -1,15 +1,7 @@
-<!--<script type="text/javascript">
-    tinymce.init({
-        selector: "textarea",
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste"
-        ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-    });
-</script>-->
+
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+
+    <br/>
 
     <div ncy-breadcrumb></div>
 
@@ -31,7 +23,10 @@
 				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid}">
 
 					<div class="controls">
-						<textarea ui-tinymce data-ng-model="article.content" name="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+<!--
+                        <textarea ui-tinymce data-ng-model="article.content" name="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+-->
+                        <textarea data-ng-model="article.content" name="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
 					</div>
 
 					<div ng-show="submitted && articleForm.content.$invalid" class="help-block">

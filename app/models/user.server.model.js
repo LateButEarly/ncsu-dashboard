@@ -35,6 +35,11 @@ var UserSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Notification'
     },
+    bio: {
+        type: String,
+        trim: true,
+        default: ''
+    },
 	firstName: {
 		type: String,
 		trim: true,

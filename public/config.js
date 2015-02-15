@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'student-dashboard';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies', 'ngAnimate',  'ngTouch', 'ncy-angular-breadcrumb', 'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'ui.tinymce', 'ui.calendar'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies', 'ngAnimate',  'ngTouch', 'ncy-angular-breadcrumb', 'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'ui.tinymce'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

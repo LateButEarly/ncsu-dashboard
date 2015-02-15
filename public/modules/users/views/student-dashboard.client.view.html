@@ -9,12 +9,6 @@
     .fc-button-today {display:none;}
     .fc-day, .fc-sun, .fc-widget-content{min-height: 36px!important;}
 
-    .sidebar {
-        display: block;
-        float: left;
-        width: 250px;
-        background: #333;
-    }
     .content {
         display: block;
         overflow: hidden;
@@ -75,7 +69,8 @@
 </style>
 
 <section data-ng-controller="StudentdashboardController">
-        <br/>
+    <div class="container">
+            <br/>
         <div data-ng-controller="NotificationsController" data-ng-init="find()">
             <!-- data-ng-repeat="notification in notifications"  -->
             <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
@@ -89,10 +84,8 @@
                 <span data-ng-bind-html="notification.name"></span>
             </div>
         </div>
-
-        <div class="container">
             <div class="row">
-                <aside class="sidebar">
+                <aside class="col-md-3">
                     <nav class="sidebar-nav">
                         <ul id="menu">
                             <li data-ng-controller="CoursesController" data-ng-init="find()" class="active">
@@ -123,8 +116,8 @@
                     </nav>
                 </aside>
 
-                <main class="col-md-6">
-                    <div class="well well-lg">
+                <main style="width: 47.3%!important;padding-right:30px!important;" class="col-md-5">
+                    <div style="margin-bottom:30px!important;" class="well well-lg">
                         <h2>Upcoming Assignments</h2>
                         <hr>
                         <!-- TODO: NG Repeat over all assignments attached to student. -->
@@ -134,7 +127,7 @@
                             <div class="col-md-3"><p>2/22/2015</p></div>
                         </div>
                     </div>
-                    <div class="well well-lg">
+                    <div style="margin-bottom:30px!important;" class="well well-lg">
                         <h2>My Feed</h2>
                         <hr>
                         <div class="row">
@@ -151,8 +144,13 @@
                     </div>
                 </main>
 
-                <aside class="col-md-3">
+                <aside style="width:310px;float: left;">
+                    <div style="min-height:290px;">
+                        <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    </div>
+<!--
                     <div ui-calendar="uiConfig.calendar" data-ng-model="eventSources"></div>
+-->
                 </aside>
             </div>
         </div>
