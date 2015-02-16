@@ -6,7 +6,7 @@ angular.module('users').controller('StudentdashboardController', ['$scope', 'Aut
 
         $scope.getGravatar = function() {
             var userEmail = $scope.user.email;
-            return '//www.gravatar.com/avatar/' + md5(userEmail.trim());
+            return '//www.gravatar.com/avatar/' + md5(userEmail.trim()) + '?s=200';
         };
 
         // If user is not signed in then redirect back home

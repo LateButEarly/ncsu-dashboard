@@ -191,7 +191,10 @@
             </main>
 
             <aside style="width:310px;float: left;">
-                <img ng-src="{{getGravatar()}}"/>
+                <div style="height:200px;width:200px;overflow:hidden;border-radius:50%;margin: 0 auto;">
+                    <img style="-webkit-transform:translate(-50%);margin-left:100px;" ng-src="{{getGravatar()}}"/>
+                </div>
+                <h2>Welcome, {{user.firstName}}</h2>
 
                 <div style="min-height:290px;">
                     <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
