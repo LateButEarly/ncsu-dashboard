@@ -20,16 +20,16 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 
         switch($scope.authentication.user.role){
                 case 'student':
-                    $scope.dashboard = "student-dashboard";
+                    $scope.dashboard = 'student-dashboard';
                     break;
                 case 'teacher':
-                    $scope.dashboard = "teacher-dashboard";
+                    $scope.dashboard = 'teacher-dashboard';
                     break;
                 case 'admin':
-                    $scope.dashboard = "admin-dashboard";
+                    $scope.dashboard = 'admin-dashboard';
                     break;
                 default:
-                    $scope.dashboard = "";
+                    $scope.dashboard = '';
         }
 
         $scope.alerts = [

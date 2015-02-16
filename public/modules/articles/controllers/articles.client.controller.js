@@ -18,6 +18,19 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 				$scope.error = errorResponse.data.message;
 			});
 		};
+/*
+        $scope.addComment = function(){
+            var comment = new Comments({
+                body: this.body
+            });
+            comment.$save(function(response){
+                $location.path('articles/' + article._id + 'comments/' + response._id);
+
+                $scope.body = '';
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };*/
 
 		$scope.remove = function(article) {
 			if (article) {

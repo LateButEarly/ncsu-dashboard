@@ -5,6 +5,14 @@ angular.module('users').config(['$stateProvider',
 	function($stateProvider) {
 		// Users state routing
 		$stateProvider.
+		state('admin-dashboard', {
+			url: '/admin-dashboard',
+			templateUrl: 'modules/users/views/admin-dashboard.client.view.html'
+		}).
+		state('teacher-dashboard', {
+			url: '/teacher-dashboard',
+			templateUrl: 'modules/users/views/teacher-dashboard.client.view.html'
+		}).
 		state('student-dashboard', {
 			url: '/student-dashboard',
 			templateUrl: 'modules/users/views/student-dashboard.client.view.html'
