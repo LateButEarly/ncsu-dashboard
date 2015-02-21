@@ -4,10 +4,12 @@ angular.module('users').controller('StudentdashboardController', ['$scope', 'Aut
 	function($scope, Authentication) {
         $scope.user = Authentication.user;
 
+
         $scope.getGravatar = function() {
             var userEmail = $scope.user.email;
-            return '//www.gravatar.com/avatar/' + md5(userEmail.trim()) + '?s=200';
+            return '//www.gravatar.com/avatar/' + md5(userEmail.trim()) + '?s=100';
         };
+
 
         // If user is not signed in then redirect back home
         if (!$scope.user) $location.path('/');

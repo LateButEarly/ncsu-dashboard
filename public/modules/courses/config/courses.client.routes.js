@@ -31,7 +31,7 @@ angular.module('courses').config(['$stateProvider',
 		state('viewCourse', {
 			url: '/courses/:courseId',
                 controller: function($scope, Courses, $stateParams) {
-                    $scope.course = $scope.course = Courses.get({
+                        $scope.course = Courses.get({
                         courseId: $stateParams.courseId
                     });
                 },

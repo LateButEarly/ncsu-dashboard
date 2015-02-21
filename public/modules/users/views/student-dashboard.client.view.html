@@ -108,7 +108,7 @@
         </div>
 
         <div class="row">
-            <aside class="col-md-3">
+            <aside style="margin-bottom: 30px;" class="col-xs-12 col-md-3">
                 <nav class="sidebar-nav">
                     <ul id="menu">
                         <li data-ng-controller="CoursesController" data-ng-init="find()" class="active">
@@ -146,7 +146,7 @@
                 </nav>
             </aside>
 
-            <main style="width: 47.3%!important;padding-right:30px!important;" class="col-md-5">
+            <main style="padding-right:30px!important;" class="col-xs-12 col-md-5">
                 <div style="margin-bottom:30px!important;" class="well well-lg">
                     <h2>Upcoming Assignments</h2>
                     <hr>
@@ -165,11 +165,11 @@
                     <h2>My Feed</h2>
                     <hr>
                     <div class="row">
-                        <div class="col-xs-6 col-md-12">
+                        <div class="col-md-12">
                             <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club
                                 Meeting Minutes</h5>
 
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
                                 exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
                                 laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
                             </p>
@@ -177,11 +177,11 @@
                     </div>
                     <hr/>
                     <div class="row">
-                        <div class="col-xs-6 col-md-12">
+                        <div class="col-md-12">
                             <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales
                                 Process into Your Web Copy</h5>
 
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
                                 exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
                                 laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
                             </p>
@@ -191,11 +191,10 @@
             </main>
 
             <aside style="width:310px;float: left;">
-                <div style="height:200px;width:200px;overflow:hidden;border-radius:50%;margin: 0 auto;">
-                    <img style="-webkit-transform:translate(-50%);margin-left:100px;" ng-src="{{getGravatar()}}"/>
+                <div style="height:100px;width:100px;overflow:hidden;border-radius:50%;margin: 0 auto;">
+                    <img style="-webkit-transform:translate(-50%);margin-left:50px;" ng-src="{{getGravatar()}}"/>
                 </div>
-                <h2>Welcome, {{user.firstName}}</h2>
-
+                <h3>Welcome, {{user.displayName}}</h3>
                 <div style="min-height:290px;">
                     <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
                 </div>
