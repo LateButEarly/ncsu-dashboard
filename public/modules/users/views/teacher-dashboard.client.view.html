@@ -4,21 +4,10 @@
     });
 </script>
 <style>
-    .fc-header-left {
-        display: none;
-    }
-
-    ul li:before {
-        display: none;
-    }
-
-    .fc-button-today {
-        display: none;
-    }
-
-    .fc-day, .fc-sun, .fc-widget-content {
-        min-height: 36px !important;
-    }
+    .fc-header-left {display:none;}
+    ul li:before {display:none;}
+    .fc-button-today {display:none;}
+    .fc-day, .fc-sun, .fc-widget-content{min-height: 36px!important;}
 
     .content {
         display: block;
@@ -33,25 +22,21 @@
         background-repeat: repeat-x;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=1);
     }
-
     .sidebar-nav ul {
         padding: 0;
         margin: 0;
         list-style: none;
     }
-
     .sidebar-nav a,
     .sidebar-nav a:hover,
     .sidebar-nav a:focus,
     .sidebar-nav a:active {
         outline: none;
     }
-
     .sidebar-nav ul li,
     .sidebar-nav ul a {
         display: block;
     }
-
     .sidebar-nav ul a {
         padding: 10px 20px;
         color: #aaa;
@@ -59,43 +44,36 @@
         box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.05) inset;
         text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
     }
-
     .sidebar-nav ul a:hover,
     .sidebar-nav ul a:focus,
     .sidebar-nav ul a:active {
         color: #fff;
         text-decoration: none;
     }
-
     .sidebar-nav ul ul a {
         padding: 10px 30px;
         background-color: rgba(255, 255, 255, 0.1);
     }
-
     .sidebar-nav ul ul a:hover,
     .sidebar-nav ul ul a:focus,
     .sidebar-nav ul ul a:active {
         background-color: rgba(255, 255, 255, 0.2);
     }
-
     .sidebar-nav-item {
         padding-left: 5px;
     }
-
     .sidebar-nav-item-icon {
         padding-right: 5px;
     }
 
 </style>
 
-<section data-ng-controller="StudentdashboardController">
+<section data-ng-controller="TeacherdashboardController">
     <div class="container">
         <br/>
-
         <div data-ng-controller="NotificationsController" data-ng-init="find()">
             <!-- data-ng-repeat="notification in notifications"  -->
-            <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type=""
-                   class="alert alert-warning" close="closeAlert($index)"></alert>
+            <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type="" class="alert alert-warning" close="closeAlert($index)"></alert>
 
             <!--type {{notification.type}}
             <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
@@ -105,96 +83,99 @@
                 </form>
                 <span data-ng-bind-html="notification.name"></span>
                 -->
+
         </div>
 
         <div class="row">
-            <aside style="margin-bottom: 30px;" class="col-xs-12 col-md-3">
+            <aside class="col-md-3">
                 <nav class="sidebar-nav">
                     <ul id="menu">
                         <li data-ng-controller="CoursesController" data-ng-init="find()" class="active">
                             <a href="#">My Courses<span class="fa arrow"></span></a>
                             <ul>
-                                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name"
-                                                                          data-ng-href="#!/courses/{{course._id}}"></a>
-                                </li>
+                                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name" data-ng-href="#!/courses/{{course._id}}"></a></li>
                             </ul>
                         </li>
                         <li data-ng-controller="ArticlesController" data-ng-init="find()">
                             <a href="#">My Articles <span class="fa arrow"></span></a>
                             <ul>
-                                <li data-ng-repeat="article in articles"><a data-ng-bind="article.title"
-                                                                            data-ng-href="#!/articles/{{article._id}}"></a>
-                                </li>
+                                <li data-ng-repeat="article in articles"><a data-ng-bind="article.title" data-ng-href="#!/articles/{{article._id}}"></a></li>
                             </ul>
                         </li>
                         <li data-ng-controller="ClubsController" data-ng-init="find()">
                             <a href="#">My Clubs <span class="fa arrow"></span></a>
                             <ul>
-                                <li data-ng-repeat="club in clubs"><a data-ng-bind="club.name"
-                                                                      data-ng-href="#!/clubs/{{club._id}}"></a></li>
+                                <li data-ng-repeat="club in clubs"><a data-ng-bind="club.name" data-ng-href="#!/clubs/{{club._id}}"></a></li>
                             </ul>
                         </li>
                         <li data-ng-controller="ActivitiesController" data-ng-init="find()">
                             <a href="#">My Activities <span class="fa arrow"></span></a>
                             <ul>
-                                <li data-ng-repeat="activity in activities"><a data-ng-bind="activity.name"
-                                                                               data-ng-href="#!/activities/{{activity._id}}"></a>
-                                </li>
+                                <li data-ng-repeat="activity in activities"><a data-ng-bind="activity.name" data-ng-href="#!/activities/{{activity._id}}"></a></li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
             </aside>
 
-            <main style="padding-right:30px!important;" class="col-xs-12 col-md-5">
+            <main style="width: 47.3%!important;padding-right:30px!important;" class="col-md-5">
                 <div style="margin-bottom:30px!important;" class="well well-lg">
                     <h2>Upcoming Assignments</h2>
-                    <hr>
-                    <!-- TODO: NG Repeat over all assignments attached to student. -->
-                    <div data-ng-controller="TeacherdashboardController">
-                        <div class="row" data-ng-repeat="assignment in assignments"
-                             data-ng-show="assignment.isVisible === true && user.role === 'student'">
-                            <div class="col-md-2 text-center"><input type="checkbox"
-                                                                     data-ng-model="assignment.isComplete"/></div>
-                            <div class="col-md-7"><p>{{assignment.title}}</p></div>
-                            <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                        <span> Edit Mode: </span>
+                        <div class="btn-group">
+                            <label class="btn btn-primary" ng-model="isEditing" btn-radio="'Off'">Off</label>
+                            <label class="btn btn-primary" ng-model="isEditing" btn-radio="'On'">On</label>
+                        </div>
+                    <hr/>
+                    <div class="row">
+                        <div data-ng-repeat="assignment in assignments">
+                            <div class="col-md-2 text-center">
+                                <!-- if isEditingAssignments = true offer to save changes-->
+                                <a data-ng-click="saveAssignment()" data-ng-show="isEditing === 'On' && assignment.title.$dirty" class="btn btn-success">
+                                    <i class="glyphicon glyphicon-ok"></i><span> Save</span>
+                                </a>
+                                <!-- else show checkbox -->
+                                <input data-ng-hide="isEditing === 'On'" type="checkbox" data-ng-model="assignment.isComplete"/>
+                            </div>
+                            <div class="col-md-6">
+                                <!-- if is editing, then allow input box -->
+                                <form>
+                                    <input data-ng-show="isEditing === 'On'" type="text" class="form-control" data-ng-model="assignment.title"/>
+                                </form>
+                                <!-- else print title -->
+                                <p data-ng-hide="isEditing === 'On'">{{assignment.title}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p data-ng-show="isEditing === 'On'" class="input-group">
+                                    <input type="text" class="form-control" datepicker-popup="shortDate" ng-model="assignment.dueDate"/>
+                                </p>
+                                <p data-ng-hide="isEditing === 'On'">{{assignment.dueDate}}</p>
+                            </div>
                         </div>
                     </div>
+                    <a data-ng-click="addAssignment()" data-ng-show="isEditing === 'On'" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-plus"></i> New Assignment</a>
                 </div>
+
                 <div style="margin-bottom:30px!important;" class="well well-lg">
                     <h2>My Feed</h2>
                     <hr>
                     <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club
-                                Meeting Minutes</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
-                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
-                            </p>
+                        <div class="col-xs-6 col-md-12">
+                            <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club Meeting Minutes</h5>
+                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
                         </div>
                     </div>
                     <hr/>
                     <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales
-                                Process into Your Web Copy</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
-                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
-                            </p>
+                        <div class="col-xs-6 col-md-12">
+                            <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales Process into Your Web Copy</h5>
+                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a></p>
                         </div>
                     </div>
                 </div>
             </main>
 
             <aside style="width:310px;float: left;">
-                <div style="height:100px;width:100px;overflow:hidden;border-radius:50%;margin: 0 auto;">
-                    <img style="-webkit-transform:translate(-50%);margin-left:50px;" ng-src="{{getGravatar()}}"/>
-                </div>
-                <h3>Welcome, {{user.displayName}}</h3>
                 <div style="min-height:290px;">
                     <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
                 </div>
@@ -204,5 +185,4 @@
             </aside>
         </div>
     </div>
-
 </section>

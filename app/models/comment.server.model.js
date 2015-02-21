@@ -7,20 +7,15 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Club Schema
+ * Comment Schema
  */
-var ClubSchema = new Schema({
-	name: {
+var CommentSchema = new Schema({
+	body: {
 		type: String,
 		default: '',
-		required: 'Please fill in the Club name.',
+		required: 'Please fill Comment body.',
 		trim: true
 	},
-    description: {
-        type: String,
-        default: '',
-        trim: true
-    },
 	created: {
 		type: Date,
 		default: Date.now
@@ -28,7 +23,11 @@ var ClubSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+    article: {
+        type: Schema.ObjectId,
+        ref: 'Article'
+    }
 });
 
-mongoose.model('Club', ClubSchema);
+mongoose.model('Comment', CommentSchema);

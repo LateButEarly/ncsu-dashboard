@@ -5,11 +5,28 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$stateParams',
 	function($scope, $stateParams, $location, Authentication, Clubs) {
 		$scope.authentication = Authentication;
 
+        $scope.notifications = [
+            { title: 'About', content: '' },
+            { title: 'Announcements', content: 'Dynamic content 2' },
+            { title: 'Calendar', content: ''}
+        ];
+
+        //$scope.club = Clubs;
+
+        /* TODO: Make tabs dynamic
+        $scope.tabs = [
+            { title: 'About', content: '' },
+            { title: 'Announcements', content: 'Dynamic content 2' },
+            { title: 'Calendar', content: ''}
+        ];
+        */
+
 		// Create new Club
 		$scope.create = function() {
 			// Create new Club object
 			var club = new Clubs ({
-				name: this.name
+				name: this.name,
+                description: this.description
 			});
 
 			// Redirect after save
@@ -18,6 +35,8 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$stateParams',
 
 				// Clear form fields
 				$scope.name = '';
+                $scope.description = '';
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

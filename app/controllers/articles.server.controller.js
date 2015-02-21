@@ -94,6 +94,13 @@ exports.articleByID = function(req, res, next, id) {
 		req.article = article;
 		next();
 	});
+/*    Article.findById(id).populate('comments').exec(function(err, article) {
+        if (err) return next(err);
+        if (!article) return next(new Error('Failed to load comment ' + id));
+        req.article = article;
+        next();
+    });
+*/
 };
 
 /**
