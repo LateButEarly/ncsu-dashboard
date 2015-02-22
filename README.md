@@ -39,7 +39,7 @@ $ grunt
     - [ ] Comments (CRUD)
   - [ ] Blog (CRUD)
     - [ ] Comments (CRUD)
-  - [ ] Classes (Read-only)
+  - [ ] Courses (Read-only)
     - [ ] Assignments (Read & Update)
       - [ ] Upload Documents (CRUD)
       - [ ] Feedback (Read-only)
@@ -48,7 +48,7 @@ $ grunt
     - [ ] Notices (Read-only)
 
 - [ ] Teacher Dashboard
-  - [ ] Classes (CRUD)
+  - [ ] Courses (CRUD)
     - [ ] Assignments (CRUD)
       - [ ] Documents (Read-only)
       - [ ] Feedback (CRUD)
