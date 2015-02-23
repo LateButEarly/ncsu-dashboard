@@ -11,7 +11,7 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 			var course = new Courses ({
                 code: this.code,
 				name: this.name,
-                content: this.content
+                description: this.description
 			});
 
 			// Redirect after save
@@ -21,7 +21,7 @@ angular.module('courses').controller('CoursesController', ['$scope', '$statePara
 				// Clear form fields
                 $scope.code = '';
 				$scope.name = '';
-                $scope.content = '';
+                $scope.description = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
