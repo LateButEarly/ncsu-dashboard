@@ -6,9 +6,21 @@ angular.module('clubs').controller('ClubsController', ['$scope', '$stateParams',
 		$scope.authentication = Authentication;
 
         $scope.notifications = [
-            { title: 'About', content: '' },
-            { title: 'Announcements', content: 'Dynamic content 2' },
-            { title: 'Calendar', content: ''}
+            { title: 'New CEO Executive Members', icon: 'glyphicon-bullhorn', label: 'Notification', date: '2/22/2015' },
+            { title: 'Executive Elections', icon: 'glyphicon-bullhorn', label: 'Notification', date: '2/16/2015' },
+            { title: 'First meeting of the semester', icon: 'glyphicon-calendar', label: 'Event', date: '2/12/2015' },
+            { title: 'Bill Nye the Noodle Guy joined the club', icon: 'glyphicon-user', label: 'Member', date: '2/10/2015' },
+            { title: 'Albert Ramenstein joined the club', icon: 'glyphicon-user', label: 'Member', date: '2/06/2015' },
+            { title: 'Pay Spring 2015 dues by 2/31', icon: 'glyphicon-bell', label: 'Reminder', date: '2/01/2015' }
+        ];
+
+        $scope.members = [
+            { avatar: '', name: 'Daniel Marko', title: 'President', email: '' },
+            { avatar: '', name: 'Dylan Ryan', title: 'Vice President', email: '' },
+            { avatar: '', name: 'Kit Kat', title: 'Treasurer', email: '' },
+            { avatar: '', name: 'Reese', title: 'Public Relations', email: '' },
+            { avatar: '', name: 'Bill Nye', title: 'Member', email: '' },
+            { avatar: '', name: 'Katherine Lampe', title: 'Member', email: '' }
         ];
 
         //$scope.club = Clubs;

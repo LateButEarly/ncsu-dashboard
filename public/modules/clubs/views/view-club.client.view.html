@@ -1,25 +1,23 @@
-<section data-ng-controller="ClubsController" data-ng-init="findOne()">
+<section class="container" data-ng-controller="ClubsController" data-ng-init="findOne()">
 
     <br/>
 
     <div ncy-breadcrumb></div>
 
-    <div class="">
-        <h1 data-ng-bind="club.name"></h1>
+    <h1 style="margin-bottom: 50px;" data-ng-bind="club.name"></h1>
 
-        <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
+    <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
 
-            <!--
-            <a class="btn btn-primary" href="/#!/clubs/{{club._id}}/edit">
-                <i class="glyphicon glyphicon-edit"></i> Edit Club
-            </a>
+        <!--
+        <a class="btn btn-primary" href="/#!/clubs/{{club._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i> Edit Club
+        </a>
 
-            <a class="btn btn-primary" data-ng-click="remove();">
-                <i class="glyphicon glyphicon-trash"></i>
-            </a>
-            -->
+        <a class="btn btn-primary" data-ng-click="remove();">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+        -->
 
-        </div>
     </div>
 
 
@@ -31,8 +29,11 @@
 
     <!-- Angular UI Tab Directive-->
     <tabset justified="true">
-        <tab heading="About">
-            <!-- Course Description Tab -->
+        <tab>
+            <tab-heading>
+                About
+            </tab-heading>
+            <!-- Club Description Tab -->
             <div style="margin-top: 30px;" class="row">
                 <div class="col-md-4">
                     <!-- Club Image -->
@@ -52,20 +53,94 @@
             </div>
         </tab>
         <tab>
+            <!-- Club Notifications Tab -->
             <tab-heading>
-                <span class="badge">{{notifications.length}}</span> Notifications
+                Notifications <span class="badge">{{notifications.length}}</span>
             </tab-heading>
-            Calendar
+
+            <div style="margin-top: 30px;" class="row">
+                <div class="col-md-4">
+                    <!-- Club Image -->
+                    <img style="height: 100%;width: 100%;"
+                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
+                    <!-- Apply/Donate Button -->
+                    <div style="margin: 35px auto;" class="btn-group-justified">
+                        <a href="#" class="btn btn-primary">Apply</a>
+                        <a href="#" class="btn btn-success">Donate</a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+                    <h4>Club Feed</h4>
+
+                    <div class="row" data-ng-repeat="notification in notifications">
+                        <div class="col-md-2"><span class="label label-info  pull-right">{{ notification.label }}</span>
+                            <!--<i style="font-size: 1.6em;" class="glyphicon" ng-class="notification.icon"></i>-->
+                        </div>
+                        <div class="col-md-7"><p>
+                            {{ notification.title }}</p></div>
+                        <div class="col-md-3"><p>{{ notification.date }}</p></div>
+                    </div>
+                </div>
+            </div>
         </tab>
-        <tab heading="Calendar">Projects</tab>
         <tab>
             <tab-heading>
-                <i class="glyphicon glyphicon-exclamation-sign"></i> Dues
+                Calendar
             </tab-heading>
-            Stripe Payment Button
+
+            <div style="margin-top: 30px;" class="row">
+                <div class="col-md-4">
+                    <!-- Club Image -->
+                    <img style="height: 100%;width: 100%;"
+                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
+                    <!-- Apply/Donate Button -->
+                    <div style="margin: 35px auto;" class="btn-group-justified">
+                        <a href="#" class="btn btn-primary">Apply</a>
+                        <a href="#" class="btn btn-success">Donate</a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+
+                    <!-- Tab Title -->
+                    <h4>Club Calendar</h4>
+
+                    <!-- Tab Content -->
+                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
+
+                </div>
+            </div>
         </tab>
+
+        <tab>
+            <tab-heading>
+                Dues <i class="glyphicon glyphicon-exclamation-sign"></i>
+            </tab-heading>
+            <div style="margin-top: 30px;" class="row">
+                <div class="col-md-4">
+                    <!-- Club Image -->
+                    <img style="height: 100%;width: 100%;"
+                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
+                    <!-- Apply/Donate Button -->
+                    <div style="margin: 35px auto;" class="btn-group-justified">
+                        <a href="#" class="btn btn-primary">Apply</a>
+                        <a href="#" class="btn btn-success">Donate</a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-md-offset-1">
+
+                    <!-- Tab Title -->
+                    <h4>Club Dues</h4>
+
+                    <!-- Tab Content -->
+
+                </div>
+            </div>
+        </tab>
+
         <tab heading="Events">Textbook Content</tab>
+
         <tab heading="Members"></tab>
+
     </tabset>
 
 

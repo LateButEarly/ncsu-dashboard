@@ -65,6 +65,27 @@
         .modal-content{
             margin-top: 100%;
         }
+        .modal-backdrop {
+            z-index: 0!important;
+        }
+        footer {
+            font-size: 0.9em;
+            font-family: UniversLight;
+            color: #fff;
+            background-color: #900;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 200;
+            max-width: 1500px;
+            margin: auto;
+            -webkit-transition: -webkit-transform 0.3s ease;
+            -moz-transition: -moz-transform 0.3s ease;
+            -o-transition: -o-transform 0.3s ease;
+            transition: transform 0.3s ease;
+        }
+        .dropdown-menu{
+            min-width: 200px!important;
+        }
     </style>
 
     <!-- Fix Teh Glyphicons -->
@@ -280,10 +301,13 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" style="margin-bottom:0!important;padding: 15px;" class="navbar navbar-default navbar-static-top"></header>
-		<section class="container">
+	<header data-ng-include="'/modules/core/views/header.client.view.html'" style="margin-bottom:0!important;padding: 10px 0 29px 0;" class="navbar navbar-default navbar-static-top"></header>
+
+    <section class="container-fluid">
             {% block content %}{% endblock %}
 		</section>
+
+    <footer data-ng-include="'/modules/core/views/footer.client.view.html'"></footer>
 
 
 	<!--Embedding The User Object-->
