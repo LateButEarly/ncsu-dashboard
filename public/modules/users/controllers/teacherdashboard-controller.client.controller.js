@@ -9,10 +9,11 @@ angular.module('users').controller('TeacherdashboardController', ['$scope', 'Aut
 
         $scope.isEditing = 'Off';
 
-
+        //course: this.course.code
         $scope.assignments = [
-            {isComplete: true, isVisible: true, title: 'Homework Assignment #3', dueDate: '2/18/2015'},
-            {isComplete: false, isVisible: false, title: 'Homework Assignment #4', dueDate: '2/27/2015'}
+            {isComplete: true, isVisible: true, course: 'BUS 443', title: 'Homework Assignment #3', dueDate: '2/18/2015'},
+            {isComplete: false, isVisible: true, course: 'BUS 440', title: 'Chocolate Heaven Case Study', dueDate: '2/29/2015'},
+            {isComplete: false, isVisible: false, course: 'BUS 440', title: 'Homework Assignment #4', dueDate: '2/27/2015'}
         ];
 
         $scope.addAssignment = function() {

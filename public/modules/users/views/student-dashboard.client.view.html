@@ -28,30 +28,26 @@
 
     .sidebar-nav {
         border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-        background-image: -webkit-linear-gradient(left, color-stop(#330000 10px), color-stop(#220000 10px));
-        background-image: linear-gradient(to right, #330000 10px, #220000 10px);
+        background-image: -webkit-linear-gradient(left, color-stop(#333333 10px), color-stop(#222222 10px));
+        background-image: linear-gradient(to right, #333333 10px, #222222 10px);
         background-repeat: repeat-x;
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff333333', endColorstr='#ff222222', GradientType=1);
     }
-
     .sidebar-nav ul {
         padding: 0;
         margin: 0;
         list-style: none;
     }
-
     .sidebar-nav a,
     .sidebar-nav a:hover,
     .sidebar-nav a:focus,
     .sidebar-nav a:active {
         outline: none;
     }
-
     .sidebar-nav ul li,
     .sidebar-nav ul a {
         display: block;
     }
-
     .sidebar-nav ul a {
         padding: 10px 20px;
         color: #aaa;
@@ -59,29 +55,24 @@
         box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.05) inset;
         text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
     }
-
     .sidebar-nav ul a:hover,
     .sidebar-nav ul a:focus,
     .sidebar-nav ul a:active {
         color: #fff;
         text-decoration: none;
     }
-
     .sidebar-nav ul ul a {
         padding: 10px 30px;
         background-color: rgba(255, 255, 255, 0.1);
     }
-
     .sidebar-nav ul ul a:hover,
     .sidebar-nav ul ul a:focus,
     .sidebar-nav ul ul a:active {
         background-color: rgba(255, 255, 255, 0.2);
     }
-
     .sidebar-nav-item {
         padding-left: 5px;
     }
-
     .sidebar-nav-item-icon {
         padding-right: 5px;
     }
@@ -89,7 +80,7 @@
 </style>
 
 <section data-ng-controller="StudentdashboardController">
-    <div class="container">
+
         <br/>
 
         <div data-ng-controller="NotificationsController" data-ng-init="find()">
@@ -146,24 +137,24 @@
                 </nav>
             </aside>
 
-            <main style="padding-right:30px!important;" class="col-xs-12 col-md-5">
-                <div style="margin-bottom:30px!important;" class="well well-lg">
+            <main class="col-xs-12 col-md-6">
+                <div style="margin-bottom:30px!important;" class="well">
                     <h2>Upcoming Assignments</h2>
-                    <hr>
+                    <hr/>
                     <!-- TODO: NG Repeat over all assignments attached to student. -->
                     <div data-ng-controller="TeacherdashboardController">
                         <div class="row" data-ng-repeat="assignment in assignments"
                              data-ng-show="assignment.isVisible === true && user.role === 'student'">
                             <div class="col-md-2 text-center"><input type="checkbox"
                                                                      data-ng-model="assignment.isComplete"/></div>
-                            <div class="col-md-7"><p>{{assignment.title}}</p></div>
+                            <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span> {{assignment.title}}</p></div>
                             <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
                         </div>
                     </div>
                 </div>
-                <div style="margin-bottom:30px!important;" class="well well-lg">
+                <div style="margin-bottom:30px!important;" class="well">
                     <h2>My Feed</h2>
-                    <hr>
+                    <hr/>
                     <div class="row">
                         <div class="col-md-12">
                             <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club
@@ -175,7 +166,7 @@
                             </p>
                         </div>
                     </div>
-                    <hr/>
+                    <br/>
                     <div class="row">
                         <div class="col-md-12">
                             <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales
@@ -187,15 +178,30 @@
                             </p>
                         </div>
                     </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="media-heading"><span class="label label-success">Course</span>
+                                BUS 443 (001) Spring, 2015 Business Analytics</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
+                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </main>
 
-            <aside style="width:310px;float: left;">
+            <aside class="col-xs-12 col-md-3">
+                <!--
                 <div style="height:100px;width:100px;overflow:hidden;border-radius:50%;margin: 0 auto;">
-                    <img style="-webkit-transform:translate(-50%);margin-left:50px;" ng-src="{{getGravatar()}}"/>
+                    <img style="-webkit-transform:translate(-50%);margin-left:50px;" data-ng-src="{{getGravatar()}}"/>
                 </div>
+
                 <h3>Welcome, {{user.displayName}}</h3>
-                <div style="min-height:290px;">
+                                -->
+                <div style="min-height:290px;margin-right: 20px;">
                     <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
                 </div>
                 <!--
@@ -203,6 +209,4 @@
                 -->
             </aside>
         </div>
-    </div>
-
 </section>
