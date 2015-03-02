@@ -16,8 +16,18 @@ var ClubSchema = new Schema({
 		required: 'Please fill in the Club name.',
 		trim: true
 	},
+    image: {
+        type: String,
+        default: '',
+        trim: true
+    },
     description: {
         type: String,
+        default: '',
+        trim: true
+    },
+    notifications: {
+        type: Array,
         default: '',
         trim: true
     },
@@ -28,7 +38,11 @@ var ClubSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+    admin: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 });
 
 mongoose.model('Club', ClubSchema);

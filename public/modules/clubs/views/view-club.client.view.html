@@ -4,54 +4,44 @@
 
     <div ncy-breadcrumb></div>
 
-    <h1 style="margin-bottom: 50px;" data-ng-bind="club.name"></h1>
+    <h1 data-ng-bind="club.name"></h1>
 
-    <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
+    <div style="margin: 30px 0;" class="row">
+        <div class="col-md-4">
+            <!-- Club Image -->
+            <img style="height: 100%;width: 100%;"
+                 src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
+            <!-- Apply/Donate Button -->
+            <div style="margin: 35px auto;" class="btn-group-justified">
+                <a href="#" class="btn btn-primary">Apply</a>
+                <a href="#" class="btn btn-success">Donate</a>
+            </div>
 
-        <!--
-        <a class="btn btn-primary" href="/#!/clubs/{{club._id}}/edit">
-            <i class="glyphicon glyphicon-edit"></i> Edit Club
-        </a>
+            <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
 
-        <a class="btn btn-primary" data-ng-click="remove();">
-            <i class="glyphicon glyphicon-trash"></i>
-        </a>
-        -->
 
+                <a class="btn btn-primary btn-block" href="/#!/clubs/{{club._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i> Edit Club
+                </a>
+
+                <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#confirm">
+                    <i class="glyphicon glyphicon-trash"></i> Delete Club
+                </a>
+
+
+            </div>
+
+        </div>
+        <div class="col-md-7 col-md-offset-1">
+            <h4>Overview</h4>
+
+            <p data-ng-bind-html="club.description"></p>
+        </div>
     </div>
 
 
-    <!--    <tabset justified="true">
-            <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
-                {{tab.content}}
-            </tab>
-        </tabset>-->
-
     <!-- Angular UI Tab Directive-->
     <tabset justified="true">
-        <tab>
-            <tab-heading>
-                About
-            </tab-heading>
-            <!-- Club Description Tab -->
-            <div style="margin-top: 30px;" class="row">
-                <div class="col-md-4">
-                    <!-- Club Image -->
-                    <img style="height: 100%;width: 100%;"
-                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
-                    <!-- Apply/Donate Button -->
-                    <div style="margin: 35px auto;" class="btn-group-justified">
-                        <a href="#" class="btn btn-primary">Apply</a>
-                        <a href="#" class="btn btn-success">Donate</a>
-                    </div>
-                </div>
-                <div class="col-md-7 col-md-offset-1">
-                    <h4>Overview</h4>
-
-                    <p data-ng-bind-html="club.description"></p>
-                </div>
-            </div>
-        </tab>
         <tab>
             <!-- Club Notifications Tab -->
             <tab-heading>
@@ -59,16 +49,6 @@
             </tab-heading>
 
             <div style="margin-top: 30px;" class="row">
-                <div class="col-md-4">
-                    <!-- Club Image -->
-                    <img style="height: 100%;width: 100%;"
-                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
-                    <!-- Apply/Donate Button -->
-                    <div style="margin: 35px auto;" class="btn-group-justified">
-                        <a href="#" class="btn btn-primary">Apply</a>
-                        <a href="#" class="btn btn-success">Donate</a>
-                    </div>
-                </div>
                 <div class="col-md-7 col-md-offset-1">
                     <h4>Club Feed</h4>
 
@@ -81,6 +61,9 @@
                         <div class="col-md-3"><p>{{ notification.date }}</p></div>
                     </div>
                 </div>
+                <div class="col-md-4">
+
+                </div>
             </div>
         </tab>
         <tab>
@@ -90,14 +73,7 @@
 
             <div style="margin-top: 30px;" class="row">
                 <div class="col-md-4">
-                    <!-- Club Image -->
-                    <img style="height: 100%;width: 100%;"
-                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
-                    <!-- Apply/Donate Button -->
-                    <div style="margin: 35px auto;" class="btn-group-justified">
-                        <a href="#" class="btn btn-primary">Apply</a>
-                        <a href="#" class="btn btn-success">Donate</a>
-                    </div>
+
                 </div>
                 <div class="col-md-7 col-md-offset-1">
 
@@ -117,14 +93,7 @@
             </tab-heading>
             <div style="margin-top: 30px;" class="row">
                 <div class="col-md-4">
-                    <!-- Club Image -->
-                    <img style="height: 100%;width: 100%;"
-                         src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
-                    <!-- Apply/Donate Button -->
-                    <div style="margin: 35px auto;" class="btn-group-justified">
-                        <a href="#" class="btn btn-primary">Apply</a>
-                        <a href="#" class="btn btn-success">Donate</a>
-                    </div>
+
                 </div>
                 <div class="col-md-7 col-md-offset-1">
 
@@ -143,5 +112,21 @@
 
     </tabset>
 
-
+    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <i class="glyphicon glyphicon-warning-sign"> </i><span>&nbsp;&nbsp; Are you sure?</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
+                    <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
