@@ -17,8 +17,12 @@
                 <a href="#" class="btn btn-success">Donate</a>
             </div>
 
-            <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
+            <h4>Club Calendar</h4>
 
+            <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
+
+
+<!--            <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
 
                 <a class="btn btn-primary btn-block" href="/#!/clubs/{{club._id}}/edit">
                     <i class="glyphicon glyphicon-edit"></i> Edit Club
@@ -28,8 +32,7 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete Club
                 </a>
 
-
-            </div>
+            </div>-->
 
         </div>
         <div class="col-md-7 col-md-offset-1">
