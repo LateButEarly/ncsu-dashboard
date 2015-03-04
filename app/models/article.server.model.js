@@ -20,11 +20,20 @@ var ArticleSchema = new Schema({
 		trim: true,
 		required: 'Title cannot be blank'
 	},
+    imageUrl: {
+        type: String,
+        default: '',
+        trim: true
+    },
 	content: {
 		type: String,
 		default: '',
 		trim: true
 	},
+    comment: {
+        type: Schema.ObjectId,
+        ref: 'Comment'
+    },
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
