@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
-	function($scope, $http, $location, Authentication) {
+angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', '$window', 'Authentication',
+	function($scope, $http, $location, $window, Authentication) {
 		$scope.authentication = Authentication;
 
 		// If user is signed in then redirect back home
@@ -24,20 +24,25 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 				// If successful we assign the response to the global user model
 				$scope.authentication.user = response;
 
+
                 // take them to the dashboard
                 switch($scope.authentication.user.role){
                     case 'student':
-                        $location.path('/student-dashboard');
+                        $window.location.href = "/#!/student-dashboard/";
+                        window.location.reload();
                         break;
                     case 'teacher':
-                        $location.path('/teacher-dashboard');
+                        $window.location.href = "/#!/teacher-dashboard";
+                        window.location.reload();
                         break;
                     case 'admin':
-                        $location.path('/admin-dashboard');
+                        $window.location.href = "/#!/admin-dashboard/";
+                        window.location.reload();
                         break;
                     default:
                         $location.path('/');
                 }
+
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
