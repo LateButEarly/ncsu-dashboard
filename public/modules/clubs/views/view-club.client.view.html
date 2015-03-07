@@ -4,7 +4,7 @@
 
     <div ncy-breadcrumb></div>
 
-    <h1 data-ng-bind="club.name"></h1>
+    <h2 data-ng-bind="club.name"></h2>
 
     <div style="margin: 30px 0;" class="row">
         <div class="col-md-4">
@@ -17,12 +17,9 @@
                 <a href="#" class="btn btn-success">Donate</a>
             </div>
 
-            <h4>Club Calendar</h4>
+            <!-- data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))"
 
-            <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
-
-
-<!--            <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
+           <div>
 
                 <a class="btn btn-primary btn-block" href="/#!/clubs/{{club._id}}/edit">
                     <i class="glyphicon glyphicon-edit"></i> Edit Club
@@ -32,7 +29,8 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete Club
                 </a>
 
-            </div>-->
+            </div>
+            -->
 
         </div>
         <div class="col-md-7 col-md-offset-1">
@@ -42,53 +40,29 @@
         </div>
     </div>
 
+<div class="row">
+    <div class="col-md-4">
+        <!-- TODO: Re-enable
+        <h4>Club Calendar</h4>
 
-    <!-- Angular UI Tab Directive-->
+        <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
+        -->
+    </div>
+    <div class="col-md-7 col-md-offset-1">
+        <h4>Club Feed</h4>
+
+        <div class="row" data-ng-repeat="notification in notifications">
+            <div class="col-md-2"><span class="label label-info  pull-right">{{ notification.label }}</span>
+                <!--<i style="font-size: 1.6em;" class="glyphicon" ng-class="notification.icon"></i>-->
+            </div>
+            <div class="col-md-7"><p>
+                {{ notification.title }}</p></div>
+            <div class="col-md-3"><p>{{ notification.date }}</p></div>
+        </div>
+    </div>
+</div>
+    <!-- Angular UI Tab Directive
     <tabset justified="true">
-        <tab>
-            <!-- Club Notifications Tab -->
-            <tab-heading>
-                Notifications <span class="badge">{{notifications.length}}</span>
-            </tab-heading>
-
-            <div style="margin-top: 30px;" class="row">
-                <div class="col-md-7 col-md-offset-1">
-                    <h4>Club Feed</h4>
-
-                    <div class="row" data-ng-repeat="notification in notifications">
-                        <div class="col-md-2"><span class="label label-info  pull-right">{{ notification.label }}</span>
-                            <!--<i style="font-size: 1.6em;" class="glyphicon" ng-class="notification.icon"></i>-->
-                        </div>
-                        <div class="col-md-7"><p>
-                            {{ notification.title }}</p></div>
-                        <div class="col-md-3"><p>{{ notification.date }}</p></div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
-                </div>
-            </div>
-        </tab>
-        <tab>
-            <tab-heading>
-                Calendar
-            </tab-heading>
-
-            <div style="margin-top: 30px;" class="row">
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-7 col-md-offset-1">
-
-                    <!-- Tab Title -->
-                    <h4>Club Calendar</h4>
-
-                    <!-- Tab Content -->
-                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true"></datepicker>
-
-                </div>
-            </div>
-        </tab>
 
         <tab>
             <tab-heading>
@@ -100,10 +74,7 @@
                 </div>
                 <div class="col-md-7 col-md-offset-1">
 
-                    <!-- Tab Title -->
                     <h4>Club Dues</h4>
-
-                    <!-- Tab Content -->
 
                 </div>
             </div>
@@ -115,6 +86,7 @@
 
     </tabset>
 
+    -->
     <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">

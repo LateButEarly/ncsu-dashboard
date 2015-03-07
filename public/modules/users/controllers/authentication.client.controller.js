@@ -26,17 +26,18 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 
 
                 // take them to the dashboard
+                // refresh the window to adjust the header link
                 switch($scope.authentication.user.role){
                     case 'student':
-                        $window.location.href = "/#!/student-dashboard/";
+                        $location.path('/student-dashboard');
                         window.location.reload();
                         break;
                     case 'teacher':
-                        $window.location.href = "/#!/teacher-dashboard";
+                        $location.path('/teacher-dashboard');
                         window.location.reload();
                         break;
                     case 'admin':
-                        $window.location.href = "/#!/admin-dashboard/";
+                        $location.path('/admin-dashboard');
                         window.location.reload();
                         break;
                     default:

@@ -9,7 +9,7 @@ angular.module('clubs').config(['$stateProvider',
 			url: '/clubs',
                 ncyBreadcrumb: {
                     parent: 'myDashboard',
-                    label: 'My Clubs'
+                    label: 'All Clubs'
                 },
 			templateUrl: 'modules/clubs/views/list-clubs.client.view.html'
 		}).

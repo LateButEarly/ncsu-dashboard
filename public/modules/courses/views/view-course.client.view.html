@@ -5,7 +5,7 @@
     <div ncy-breadcrumb></div>
 
 	<div class="page-header">
-		<h1 data-ng-bind="course.name"></h1>
+		<h2 data-ng-bind="course.name"></h2>
         <!-- TODO: Do we want to check if authenticated user id is equal to course user id? -->
         <div data-ng-show="(authentication.user.role === 'teacher' && authentication.user._id == course.user._id) || authentication.user.role === 'admin'">
             <a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
