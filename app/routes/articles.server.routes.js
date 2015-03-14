@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 var users = require('../../app/controllers/users.server.controller'),
-	articles = require('../../app/controllers/articles.server.controller');
+	articles = require('../../app/controllers/articles.server.controller'),
+    comments = require('../../app/controllers/comments.server.controller');
+
 
 module.exports = function(app) {
 	// Article Routes
@@ -19,4 +21,5 @@ module.exports = function(app) {
 
 	// Finish by binding the article middleware
 	app.param('articleId', articles.articleByID);
+    //app.param('articleListByUser', articles.articleListByUser);
 };

@@ -30,10 +30,10 @@ var ArticleSchema = new Schema({
 		default: '',
 		trim: true
 	},
-    comment: {
+    comment: [{
         type: Schema.ObjectId,
         ref: 'Comment'
-    },
+    }],
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

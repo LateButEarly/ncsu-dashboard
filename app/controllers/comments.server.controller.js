@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Comment = mongoose.model('Comment'),
+    Article = mongoose.model('Article'),
 	_ = require('lodash');
 
 /**
@@ -13,8 +14,14 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
 	var comment = new Comment(req.body);
+    //var article = req.article;
+
+    //article.comment = req.comment;
+
 	comment.user = req.user;
     //comment.article = req.article;
+
+    //console.log('Firing create comment from comments.server.controller.js');
 
 	comment.save(function(err) {
 		if (err) {
@@ -22,11 +29,6 @@ exports.create = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		}
-
-/*        req.article.comments.push(comment);
-        req.article.save(function(err){
-            if (err){ return next(err); }
-        });*/
 
         res.jsonp(comment);
 

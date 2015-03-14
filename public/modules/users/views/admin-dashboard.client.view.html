@@ -1,3 +1,49 @@
 <section data-ng-controller="AdmindashboardController">
-	This is the Admin dashboard
+<!--    <tabset vertical="true" type="pills">
+        <tab>
+            <tab-heading>
+                Overview
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Articles
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Activities
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Courses
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Clubs
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Notifications
+            </tab-heading>
+            Tabcontent
+        </tab>
+        <tab>
+            <tab-heading>
+                Users
+            </tab-heading>
+            Tabcontent
+        </tab>
+    </tabset>-->
+    <div data-ng-repeat="user in users">
+        <p data-ng-bind="user.displayName"></p>
+    </div>
 </section>
