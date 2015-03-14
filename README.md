@@ -1,4 +1,4 @@
-noodle [![Build Status](https://magnum.travis-ci.com/irkanu/ncsu-dashboard.svg?token=sPbR4o8U5FttM1ByqDzC)](https://magnum.travis-ci.com/irkanu/ncsu-dashboard) [![Code Climate](https://codeclimate.com/repos/54c99940e30ba05bf4000783/badges/cbb3becb98fe8367dff2/gpa.svg)](https://codeclimate.com/repos/54c99940e30ba05bf4000783/feed)
+noodle
 ===
 The "new moodle."
 A moodle-esque student dashboard built on the MEAN stack.
@@ -31,15 +31,15 @@ $ grunt
 
 # Todo
 - [x] User Authentication
-  - [ ] User Roles
+  - [x] User Roles
 
-- [ ] Student Dashboard
+- [x] Student Dashboard
   - [x] Breadcrumbs
-  - [ ] Events (CRUD)
+  - [x] Events (CRUD)
     - [ ] Comments (CRUD)
-  - [ ] Blog (CRUD)
+  - [x] Blog (CRUD)
     - [ ] Comments (CRUD)
-  - [ ] Courses (Read-only)
+  - [x] Courses (Read-only)
     - [ ] Assignments (Read & Update)
       - [ ] Upload Documents (CRUD)
       - [ ] Feedback (Read-only)
@@ -47,7 +47,7 @@ $ grunt
     - [ ] Quizzes (Read & Update)
     - [ ] Notices (Read-only)
 
-- [ ] Teacher Dashboard
+- [x] Teacher Dashboard
   - [ ] Courses (CRUD)
     - [ ] Assignments (CRUD)
       - [ ] Documents (Read-only)
