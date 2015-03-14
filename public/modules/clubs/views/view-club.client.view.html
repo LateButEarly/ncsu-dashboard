@@ -10,16 +10,14 @@
         <div class="col-md-4">
             <!-- Club Image -->
             <img style="height: 100%;width: 100%;"
-                 src="//f.cl.ly/items/3b0613451n2p0e373H42/c41a96bc-9b77-435c-8c38-35ede8417cb0.jpg"/>
+                 ng-src="{{club.image}}"/>
             <!-- Apply/Donate Button -->
             <div style="margin: 35px auto;" class="btn-group-justified">
                 <a href="#" class="btn btn-primary">Apply</a>
                 <a href="#" class="btn btn-success">Donate</a>
             </div>
 
-            <!-- data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))"
-
-           <div>
+           <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
 
                 <a class="btn btn-primary btn-block" href="/#!/clubs/{{club._id}}/edit">
                     <i class="glyphicon glyphicon-edit"></i> Edit Club
@@ -30,7 +28,6 @@
                 </a>
 
             </div>
-            -->
 
         </div>
         <div class="col-md-7 col-md-offset-1">

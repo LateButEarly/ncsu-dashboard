@@ -20,12 +20,28 @@
 
             <div data-ng-bind-html="article.content"></div>
 
-            <!--
-                <div data-ng-bind="article.user._id.bio"></div>
-            -->
+            <!-- <div data-ng-bind="article.user.bio"></div> -->
 
-            <div data-ng-controller="CommentsController">
-                <form name="commentForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+            <!--  data-ng-controller="CommentsController" data-ng-init="find()" -->
+
+            <p>{{article.comment[1].body}}</p>
+
+            <p data-ng-bind="article.comment.body"></p>
+
+
+           <div>
+                <div data-ng-repeat="comment in comments">
+                    <small class="list-group-item-text">
+                        Posted on
+                        <span data-ng-bind="comment.created | date:'medium'"></span>
+                        by
+                        <span data-ng-bind="article.comment.user.displayName"></span>
+                    </small>
+                    <h4 class="list-group-item-heading" data-ng-bind="article.comment.body"></h4>
+                </div>
+
+               <!-- create comment form -->
+                <form name="commentForm" class="form-horizontal" data-ng-submit="createComment()" novalidate>
                     <fieldset>
                         <div class="form-group"
                              ng-class="{ 'has-error': commentForm.body.$dirty && commentForm.body.$invalid }">
@@ -44,8 +60,11 @@
                         </div>
                     </fieldset>
                 </form>
+               <!-- comments -->
             </div>
+            <!-- .col-md-8 -->
         </div>
+
         <!-- data-ng-show="authentication.user._id == article.user._id || authentication.user.role === 'admin'" -->
         <div class="col-md-3 col-md-offset-1">
             <div class="sidebar-pane">
@@ -60,11 +79,13 @@
             </div>
         </div>
     </div>
-    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">
                         <i class="glyphicon glyphicon-warning-sign"> </i><span>&nbsp;&nbsp; Are you sure?</span>
                     </h4>

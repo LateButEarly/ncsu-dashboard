@@ -11,11 +11,12 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 			var comment = new Comments ({
 				body: this.body
 			});
-            var article = new Articles;
 
 			// Redirect after save
 			comment.$save(function(response) {
-                $location.path('articles/' + article._id + 'comments/' + response._id);
+                $location.path('articles/' + response._id);
+
+                console.log('This is saving via the comments controller...');
 
 				// Clear form fields
 				$scope.body = '';
@@ -55,6 +56,7 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 		// Find a list of Comments
 		$scope.find = function() {
 			$scope.comments = Comments.query();
+            console.log(Comments.query());
 		};
 
 		// Find existing Comment
@@ -62,6 +64,8 @@ angular.module('comments').controller('CommentsController', ['$scope', '$statePa
 			$scope.comment = Comments.get({ 
 				commentId: $stateParams.commentId
 			});
+            console.log($stateParams);
+            console.log($scope.comment);
 		};
 	}
 ]);

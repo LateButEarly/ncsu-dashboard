@@ -1,6 +1,6 @@
 <section data-ng-controller="CommentsController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="comment.name"></h1>
+		<h1 data-ng-bind="comment.body"></h1>
 	</div>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == comment.user._id))">
 		<a class="btn btn-primary" href="/#!/comments/{{comment._id}}/edit">
