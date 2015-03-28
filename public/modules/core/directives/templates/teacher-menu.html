@@ -1,0 +1,26 @@
+<style>
+    aside ul li:before{
+        content: none;
+    }
+    aside h5 a {
+        color: black!important;
+    }
+    .teacher-menu h2, .teacher-menu h5 {
+        margin-top: 5px!important;
+    }
+    .teacher-menu ul li {
+        padding-bottom: 10px;
+    }
+</style>
+<aside style="margin-bottom: 30px;">
+    <nav class="teacher-menu well">
+        <div data-ng-controller="CoursesController" data-ng-init="find()" class="active">
+            <h5><a href="/#!/courses">My Courses</a></h5>
+            <ul>
+                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name"
+                                                          data-ng-href="#!/courses/{{course._id}}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>

@@ -30,7 +30,7 @@ var ArticleSchema = new Schema({
 		default: '',
 		trim: true
 	},
-    comment: [{
+    comments: [{
         type: Schema.ObjectId,
         ref: 'Comment'
     }],

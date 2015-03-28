@@ -3,17 +3,18 @@
 module.exports = function(app) {
 	var users = require('../../app/controllers/users.server.controller');
 	var comments = require('../../app/controllers/comments.server.controller');
+    var articles = require('../../app/controllers/articles.server.controller');
 
 	// Comments Routes
-	app.route('/comments')
+	app.route('/articles/:articleId/comments')
 		.get(comments.list)
 		.post(users.requiresLogin, comments.create);
 
-	app.route('/comments/:commentId')
+	app.route('/articles/:articleId/comments/:commentId')
 		.get(comments.read)
 		.put(users.requiresLogin, comments.hasAuthorization, comments.update)
 		.delete(users.requiresLogin, comments.hasAuthorization, comments.delete);
 
 	// Finish by binding the Comment middleware
-	app.param('commentId', comments.commentByID);
+    app.param('commentId', comments.commentByID);
 };

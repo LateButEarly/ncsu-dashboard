@@ -1,144 +1,76 @@
-<style>
-    aside ul li:before{
-        content: none;
-    }
-    aside h5 a {
-        color: black!important;
-    }
-    .student-menu h2, .student-menu h5 {
-        margin-top: 5px!important;
-    }
-    .student-menu ul li {
-        padding-bottom: 10px;
-    }
-</style>
-<section data-ng-controller="StudentdashboardController">
+<section class="container" data-ng-controller="StudentdashboardController">
 
-        <br/>
+    <br/>
 
-        <div class="row">
-            <aside style="margin-bottom: 30px;" class="col-xs-12 col-md-3">
-                <nav class="student-menu well">
-                        <div data-ng-controller="CoursesController" data-ng-init="find()" class="active">
-                            <h5><a href="/#!/courses">My Courses</a></h5>
-                            <ul>
-                                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name"
-                                                                          data-ng-href="#!/courses/{{course._id}}"></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div data-ng-controller="ArticlesController" data-ng-init="find()">
-                            <h5><a href="/#!/articles">My Articles</a></h5>
-                            <ul>
-                                <li data-ng-repeat="article in articles"><a data-ng-bind="article.title"
-                                                                            data-ng-href="#!/articles/{{article._id}}"></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div data-ng-controller="ClubsController" data-ng-init="find()">
-                            <h5><a href="/#!/clubs">My Clubs</a></h5>
-                            <ul>
-                                <li data-ng-repeat="club in clubs"><a data-ng-bind="club.name"
-                                                                      data-ng-href="#!/clubs/{{club._id}}"></a></li>
-                            </ul>
-                        </div>
-                        <div data-ng-controller="ActivitiesController" data-ng-init="find()">
-                            <h5><a href="/#!/activities">My Activities</a></h5>
-                            <ul>
-                                <li data-ng-repeat="activity in activities"><a data-ng-bind="activity.name"
-                                                                               data-ng-href="#!/activities/{{activity._id}}"></a>
-                                </li>
-                            </ul>
-                        </div>
-                </nav>
-            </aside>
+    <div class="row">
 
-            <main class="col-xs-12 col-md-6">
-
-                <div data-ng-controller="NotificationsController" data-ng-init="find()">
-                    <!-- data-ng-repeat="notification in notifications"  -->
-                    <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type=""
-                           class="alert alert-warning" close="closeAlert($index)"></alert>
-
-                    <!--type {{notification.type}}
-                    <div data-ng-show="notification.isShowing === true" data-ng-repeat="notification in notifications" class="alert alert-warning" role="alert">
-                         TODO: Bind notification status to each student.
-                        <form data-ng-submit="dismissNotification()">
-                            <button type="submit" value="Update" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </form>
-                        <span data-ng-bind-html="notification.name"></span>
-                        -->
-                </div>
-
-                <div style="margin-bottom:30px!important;" class="well">
-                    <h2>Upcoming Assignments</h2>
-                    <hr/>
-                    <!-- TODO: NG Repeat over all assignments attached to student. -->
-                    <div data-ng-controller="TeacherdashboardController">
-                        <div class="row" data-ng-repeat="assignment in assignments"
-                             data-ng-show="assignment.isVisible === true && user.role === 'student'">
-                            <div class="col-md-2 text-center"><input type="checkbox"
-                                                                     data-ng-model="assignment.isComplete"/></div>
-                            <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span> {{assignment.title}}</p></div>
-                            <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-bottom:30px!important;" class="well">
-                    <h2>My Feed</h2>
-                    <hr/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club
-                                Meeting Minutes</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
-                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
-                            </p>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales
-                                Process into Your Web Copy</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
-                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
-                            </p>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h5 class="media-heading"><span class="label label-success">Course</span>
-                                BUS 443 (001) Spring, 2015 Business Analytics</h5>
-
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-                                exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
-                                laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </main>
-
-            <aside class="col-xs-12 col-md-3">
-                <!--
-                <div style="height:100px;width:100px;overflow:hidden;border-radius:50%;margin: 0 auto;">
-                    <img style="-webkit-transform:translate(-50%);margin-left:50px;" data-ng-src="{{getGravatar()}}"/>
-                </div>
-
-                <h3>Welcome, {{user.displayName}}</h3>
-                                -->
-                <div style="min-height:290px;margin-right: 20px;">
-                    <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
-                </div>
-                <!--
-                                    <div ui-calendar="uiConfig.calendar" data-ng-model="eventSources"></div>
-                -->
-            </aside>
+        <div class="col-xs-12 col-md-4">
+            <student-menu></student-menu>
         </div>
+
+        <main class="col-xs-12 col-md-8">
+
+            <div data-ng-controller="NotificationsController" data-ng-init="find()">
+                <alert data-ng-bind-html="notification.name" data-ng-repeat="notification in notifications" type=""
+                       class="alert alert-warning" close="closeAlert($index)"></alert>
+            </div>
+
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>Upcoming Assignments</h2>
+                <hr/>
+                <!-- TODO: NG Repeat over all assignments attached to student. -->
+                <div data-ng-controller="TeacherdashboardController">
+                    <div class="row" data-ng-repeat="assignment in assignments"
+                         data-ng-show="assignment.isVisible === true && user.role === 'student'">
+                        <div class="col-md-2 text-center"><input type="checkbox"
+                                                                 data-ng-model="assignment.isComplete"/></div>
+                        <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span>
+                            {{assignment.title}}</p></div>
+                        <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>My Feed</h2>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="media-heading"><span class="label label-default">Club</span> Technology Club
+                            Meeting Minutes</h5>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                            exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
+                            laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="media-heading"><span class="label label-primary">Article</span> Bring Your Sales
+                            Process into Your Web Copy</h5>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                            exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
+                            laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
+                        </p>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="media-heading"><span class="label label-success">Course</span>
+                            BUS 443 (001) Spring, 2015 Business Analytics</h5>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+                            exercitationem labore quasi quisquam. Alias aliquam dolor ea, eaque explicabo in iure
+                            laudantium minus pariatur porro quaerat qui, recusandae sed... <a href="#">Read More</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </section>

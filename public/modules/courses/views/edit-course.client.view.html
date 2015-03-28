@@ -11,9 +11,27 @@
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
+                    <label class="control-label" for="name">Course Name</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="course.name" id="name" class="form-control" placeholder="Name" required>
+                        <input type="text" data-ng-model="course.name" id="name" class="form-control" placeholder="Course Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="code">Course Code</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="course.code" id="code" class="form-control" placeholder="Course Code" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="professor">Course Professor</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="course.professor" id="professor" class="form-control" placeholder="Course Professor" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Course Description</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="course.description" id="description" class="form-control" placeholder="Course Description" required>
                     </div>
                 </div>
                 <div class="form-group">

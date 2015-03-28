@@ -1,66 +1,189 @@
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
 <section class="container" data-ng-controller="CoursesController" data-ng-init="findOne()">
 
     <br/>
 
-    <div ncy-breadcrumb></div>
+    <div class="row">
 
-	<div class="page-header">
-		<h2 data-ng-bind="course.name"></h2>
-        <!-- TODO: Do we want to check if authenticated user id is equal to course user id? -->
-        <div data-ng-show="(authentication.user.role === 'teacher' && authentication.user._id == course.user._id) || authentication.user.role === 'admin'">
-            <a class="btn btn-primary" href="/#!/courses/{{course._id}}/edit">
-                <i class="glyphicon glyphicon-edit"></i> Edit Course
-            </a>
-            <a class="btn btn-primary" data-toggle="modal" data-target="#confirm">
-                <i class="glyphicon glyphicon-trash"></i><span> Delete Course</span>
-            </a>
+        <div class="col-xs-12 col-md-4">
+
+            <student-menu></student-menu>
+
+            <!-- TODO: Do we want to check if authenticated user id is equal to course user id? -->
+            <div class="btn-group-justified" data-ng-show="(authentication.user.role === 'teacher' && authentication.user._id == course.user._id) || authentication.user.role === 'admin'">
+
+                <a class="btn btn-default" href="/#!/courses/{{course._id}}/edit">
+                    <i class="glyphicon glyphicon-edit"></i> Edit Course
+                </a>
+                <a class="btn btn-default" data-toggle="modal" data-target="#confirm">
+                    <i class="glyphicon glyphicon-trash"></i><span> Delete Course</span>
+                </a>
+            </div>
+
         </div>
 
-<!--Close button code-->
-        <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            <i class="glyphicon glyphicon-warning-sign"> Warning </i>
-                        </h4>
-                    </div>
-                    <div class="modal-body">
-                        Are you sure? Deleting this course cannot be undone.
-                    </div>
-                    <div class="modal-footer">
-                        <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
-                        <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+        <main class="col-xs-12 col-md-8">
+
+            <div style="margin-top:0!important;" class="page-header">
+                <h2 data-ng-bind="course.name"></h2>
+                <h3 style="margin-top:0!important;" class="text-warning" data-ng-bind="course.professor"></h3>
+            </div>
+
+            <alert data-ng-bind-html="alert.msg" data-ng-repeat="alert in alerts"
+                   type="{{alert.type}}" close="closeAlert($index)"></alert>
+
+            <div data-ng-show="(authentication.user.role === 'teacher' && authentication.user._id == course.user._id) || authentication.user.role === 'admin'">
+
+                <div class="input-group">
+                    <input type="text" class="form-control" data-ng-model="msg">
+                    <div class="input-group-btn">
+                       <button class='btn btn-default' ng-click="addAlert()"><i class="glyphicon glyphicon-plus"></i> Add Alert</button>
                     </div>
                 </div>
             </div>
+
+            <div style="margin:30px 0!important;" class="well">
+                <h2>Course Materials</h2>
+
+                <span> Edit Mode: </span>
+
+                <div class="btn-group">
+                    <label class="btn btn-primary" ng-model="isEditingMaterials" btn-radio="'Off'">Off</label>
+                    <label class="btn btn-primary" ng-model="isEditingMaterials" btn-radio="'On'">On</label>
+                </div>
+
+                <hr/>
+
+                <!-- data-ng-show="material.isVisible === true && (user.role === 'student' || user.role === 'teacher')" -->
+
+                <div class="row" data-ng-repeat="material in materials">
+
+                    <div class="col-md-2 text-center">
+                        <!-- if isEditingAssignments = true offer to save changes-->
+                        <a data-ng-click="saveMaterials()" ng-class="{ 'hidden': materialTitleForm.title.$dirty }"
+                           data-ng-hide="isEditingMaterials == 'Off'" class="btn btn-success">
+
+                            <i class="glyphicon glyphicon-ok"></i><span> Save</span>
+                        </a>
+                        <!-- else show checkbox -->
+                        <input data-ng-hide="isEditingMaterials === 'On'" type="checkbox"
+                               data-ng-model="material.isComplete"/>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- if is editing, then allow input box -->
+                        <form name="materialTitleForm">
+                            <input data-ng-show="isEditingMaterials === 'On'" type="text" class="form-control"
+                                   data-ng-model="material.title"/>
+                        </form>
+                        <!-- else print title -->
+                        <p data-ng-hide="isEditingMaterials === 'On'">{{material.title}}</p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <p data-ng-show="isEditingMaterials === 'On'" class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="shortDate"
+                                   ng-model="material.dueDate"/>
+                        </p>
+
+                        <p data-ng-hide="isEditingMaterials === 'On'">{{material.dueDate}}</p>
+                    </div>
+                </div>
+                <a data-ng-click="addMaterials()" data-ng-show="isEditingMaterials === 'On'"
+                   class="btn btn-primary btn-block"><i class="glyphicon glyphicon-plus"></i> New Material</a>
+            </div>
+
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>Homework</h2>
+                <hr/>
+                <!-- TODO: NG Repeat over all assignments attached to student. -->
+                <div data-ng-controller="TeacherdashboardController">
+                    <div class="row" data-ng-repeat="assignment in assignments"
+                         data-ng-show="assignment.isVisible === true && user.role === 'student'">
+                        <div class="col-md-2 text-center"><input type="checkbox"
+                                                                 data-ng-model="assignment.isComplete"/></div>
+                        <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span>
+                            {{assignment.title}}</p></div>
+                        <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>Projects</h2>
+                <hr/>
+                <!-- TODO: NG Repeat over all assignments attached to student. -->
+                <div data-ng-controller="TeacherdashboardController">
+                    <div class="row" data-ng-repeat="assignment in assignments"
+                         data-ng-show="assignment.isVisible === true && user.role === 'student'">
+                        <div class="col-md-2 text-center"><input type="checkbox"
+                                                                 data-ng-model="assignment.isComplete"/></div>
+                        <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span>
+                            {{assignment.title}}</p></div>
+                        <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>Quizzes</h2>
+                <hr/>
+                <!-- TODO: NG Repeat over all assignments attached to student. -->
+                <div data-ng-controller="TeacherdashboardController">
+                    <div class="row" data-ng-repeat="assignment in assignments"
+                         data-ng-show="assignment.isVisible === true && user.role === 'student'">
+                        <div class="col-md-2 text-center"><input type="checkbox"
+                                                                 data-ng-model="assignment.isComplete"/></div>
+                        <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span>
+                            {{assignment.title}}</p></div>
+                        <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-bottom:30px!important;" class="well">
+                <h2>Exams</h2>
+                <hr/>
+                <!-- TODO: NG Repeat over all assignments attached to student. -->
+                <div data-ng-controller="TeacherdashboardController">
+                    <div class="row" data-ng-repeat="assignment in assignments"
+                         data-ng-show="assignment.isVisible === true && user.role === 'student'">
+                        <div class="col-md-2 text-center"><input type="checkbox"
+                                                                 data-ng-model="assignment.isComplete"/></div>
+                        <div class="col-md-7"><p><span class="label label-default">{{assignment.course}}</span>
+                            {{assignment.title}}</p></div>
+                        <div class="col-md-3"><p>{{assignment.dueDate}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <!-- .col-md-8 -->
+        </main>
+
+        <!-- .row -->
+    </div>
+
+
+    <!--Close button code-->
+    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <i class="glyphicon glyphicon-warning-sign"> Warning </i>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    Are you sure? Deleting this course cannot be undone.
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
+                    <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
         </div>
-	</div>
-
-    <!-- Angular UI Tab Directive -->
-    <tabset justified="true">
-        <tab heading="Announcements">Announcements</tab>
-        <tab heading="Calendar">Calendar</tab>
-        <tab heading="Projects">Projects</tab>
-        <tab heading="Syllabus">Syllabus Content</tab>
-        <tab heading="Textbook">Textbook Content</tab>
-    </tabset>
-
+    </div>
 </section>
-
-
-<script>
-    /* center modal */
-    function centerModals(){
-        $('.modal').each(function(i){
-            var $clone = $(this).clone().css('display', 'block').appendTo('body');
-            var top = Math.round(($clone.height() - $clone.find('.modal-content').height()) / 2);
-            top = top > 0 ? top : 0;
-            $clone.remove();
-            $(this).find('.modal-content').css("margin-top", top);
-        });
-    }
-    $('.modal').on('show.bs.modal', centerModals);
-    $(window).on('resize', centerModals);
-</script>
