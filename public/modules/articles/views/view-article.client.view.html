@@ -1,3 +1,12 @@
+<style>
+    .circular img {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+    }
+</style>
 <section class="container" data-ng-controller="ArticlesController" data-ng-init="findOne()">
 
     <br/>
@@ -5,98 +14,97 @@
     <div ncy-breadcrumb></div>
 
     <div class="row">
-        <div class="col-md-8">
-            <div class="page-header">
-                <h1 data-ng-bind="article.title"></h1>
-            </div>
-            <small>
-                <em class="text-muted">
-                    Posted on
-                    <span data-ng-bind="article.created | date:'mediumDate'"></span>
-                    by
-                    <span data-ng-bind="article.user.displayName"></span>
-                </em>
-            </small>
 
-            <div data-ng-bind-html="article.content"></div>
+        <div class="col-md-4">
 
-            <!-- <div data-ng-bind="article.user.bio"></div> -->
+            <student-menu></student-menu>
 
-            <!--  data-ng-controller="CommentsController" data-ng-init="find()" -->
-
-            <p>{{article.comment[1].body}}</p>
-
-            <p data-ng-bind="article.comment.body"></p>
-
-
-           <div>
-                <div data-ng-repeat="comment in comments">
-                    <small class="list-group-item-text">
-                        Posted on
-                        <span data-ng-bind="comment.created | date:'medium'"></span>
-                        by
-                        <span data-ng-bind="article.comment.user.displayName"></span>
-                    </small>
-                    <h4 class="list-group-item-heading" data-ng-bind="article.comment.body"></h4>
-                </div>
-
-               <!-- create comment form -->
-                <form name="commentForm" class="form-horizontal" data-ng-submit="createComment()" novalidate>
-                    <fieldset>
-                        <div class="form-group"
-                             ng-class="{ 'has-error': commentForm.body.$dirty && commentForm.body.$invalid }">
-                            <label class="control-label" for="body">Comment</label>
-
-                            <div class="controls">
-                                <textarea name="body" data-ng-model="body" id="body" class="form-control" cols="30"
-                                          rows="10" placeholder="Comment" required></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-default">
-                        </div>
-                        <div data-ng-show="error" class="text-danger">
-                            <strong data-ng-bind="error"></strong>
-                        </div>
-                    </fieldset>
-                </form>
-               <!-- comments -->
-            </div>
-            <!-- .col-md-8 -->
         </div>
 
-        <!-- data-ng-show="authentication.user._id == article.user._id || authentication.user.role === 'admin'" -->
-        <div class="col-md-3 col-md-offset-1">
-            <div class="sidebar-pane">
-                <h4>Manage Article</h4>
-                <a class="btn btn-primary btn-block" ui-sref-opts="{reload: true}"
+        <div class="col-md-8">
+            <img style="width:750px;" ng-src="{{article.imageUrl}}"/>
+
+            <div data-ng-show="authentication.user._id == article.user._id || authentication.user.role === 'admin'" style="margin: 35px auto;" class="btn-group-justified">
+                <a class="btn btn-primary" ui-sref-opts="{reload: true}"
                    href="/#!/articles/{{article._id}}/edit">
                     <i class="glyphicon glyphicon-edit"></i><span> Edit Article</span>
                 </a>
-                <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#confirm">
+                <a class="btn btn-primary" data-toggle="modal" data-target="#confirm">
                     <i class="glyphicon glyphicon-trash"></i><span> Delete Article</span>
                 </a>
             </div>
-        </div>
-    </div>
-    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
-         aria-labelledby="mySmallModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        <i class="glyphicon glyphicon-warning-sign"> </i><span>&nbsp;&nbsp; Are you sure?</span>
-                    </h4>
+
+            <div class="page-header">
+                <h1 data-ng-bind="article.title"></h1>
+                <span style="font-weight: bold;" data-ng-bind="article.created | date:'mediumDate'"></span>
+                <em class="pull-right">
+                    <a ng-href="/#!/articles/{{article._id}}#comments">{{comments.length}} Comments</a>
+                </em>
+            </div>
+
+            <br/>
+
+            <div data-ng-bind-html="article.content"></div>
+
+            <div id="comments">
+                <h3>{{comments.length}} comments</h3>
+
+
+                <div style="margin-top: 50px;" data-ng-repeat="comment in comments">
+                    <div class="circular pull-left">
+                        <img ng-src="{{comment.authorImg}}"/>
+                    </div>
+                    <span style="padding: 10px;" class="list-group-item-text pull-left">
+                        <span data-ng-bind="comment.postedOn"></span>
+                        <br/>
+                        <span class="pull-left">{{comment.author}} says:</span>
+                    </span>
+
+                    <p class="list-group-item-heading" style="padding-top:10px;clear:left;"
+                       data-ng-bind="comment.body"></p>
                 </div>
-                <div class="modal-body">
-                    <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
-                    <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+                <!-- comments -->
+            </div>
+
+            <!-- create comment form -->
+            <form name="commentForm" class="form-horizontal" data-ng-submit="createComment()" novalidate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" for="body">Comment</label>
+
+                        <div class="controls">
+                                <textarea name="body" data-ng-model="body" id="body" class="form-control" cols="30"
+                                          rows="10" placeholder="Comment" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default">
+                    </div>
+                </fieldset>
+            </form>
+            <!-- .col-md-8 -->
+        </div>
+
+        <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+             aria-labelledby="mySmallModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            <i class="glyphicon glyphicon-warning-sign"> </i><span>&nbsp;&nbsp; Are you sure?</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
+                        <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
 
 

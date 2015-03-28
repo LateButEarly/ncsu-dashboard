@@ -48,12 +48,5 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             $scope.alerts.splice(index, 1);
         };
 
-        /*
-            if ($scope.authentication.user.role === 'student'){
-                $scope.dashboard = "student-dashboard";
-            } else {
-                $scope.dashboard = "";
-            }
-            */
 	}
 ]);

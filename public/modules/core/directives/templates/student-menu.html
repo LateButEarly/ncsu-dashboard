@@ -1,0 +1,49 @@
+<style>
+    aside ul li:before{
+        content: none;
+    }
+    aside h5 a {
+        color: black!important;
+    }
+    .student-menu h2, .student-menu h5 {
+        margin-top: 5px!important;
+    }
+    .student-menu ul li {
+        padding-bottom: 10px;
+    }
+</style>
+<aside style="margin-bottom: 30px;">
+    <nav class="student-menu well">
+        <div data-ng-controller="CoursesController" data-ng-init="find()" class="active">
+            <h5><a href="/#!/courses">My Courses</a></h5>
+            <ul>
+                <li data-ng-repeat="course in courses"><a data-ng-bind="course.name"
+                                                          data-ng-href="#!/courses/{{course._id}}"></a>
+                </li>
+            </ul>
+        </div>
+        <div data-ng-controller="ArticlesController" data-ng-init="find()">
+            <h5><a href="/#!/articles">My Articles</a></h5>
+            <ul>
+                <li data-ng-repeat="article in articles"><a data-ng-bind="article.title"
+                                                            data-ng-href="#!/articles/{{article._id}}"></a>
+                </li>
+            </ul>
+        </div>
+        <div data-ng-controller="ClubsController" data-ng-init="find()">
+            <h5><a href="/#!/clubs">My Clubs</a></h5>
+            <ul>
+                <li data-ng-repeat="club in clubs"><a data-ng-bind="club.name"
+                                                      data-ng-href="#!/clubs/{{club._id}}"></a></li>
+            </ul>
+        </div>
+        <div data-ng-controller="ActivitiesController" data-ng-init="find()">
+            <h5><a href="/#!/activities">My Activities</a></h5>
+            <ul>
+                <li data-ng-repeat="activity in activities"><a data-ng-bind="activity.name"
+                                                               data-ng-href="#!/activities/{{activity._id}}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>

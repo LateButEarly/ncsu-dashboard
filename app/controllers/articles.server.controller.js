@@ -18,10 +18,7 @@ exports.create = function(req, res) {
 	article.user = req.user;
 
 	article.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
+		if (err) { return res.status(400).send({ message: errorHandler.getErrorMessage(err) });
 		} else {
 			res.json(article);
 		}
@@ -32,7 +29,36 @@ exports.create = function(req, res) {
  * Create a comment
  */
 exports.createComment = function(req, res) {
-    var article = req.article;
+
+    var comment = new Comment(req.body);
+
+    comment.article = req.article._id;
+    comment.user = req.user;
+
+    comment.save(function(err,comment){
+        if (err) return res.status(400).send({ message: errorHandler.getErrorMessage(err) });
+
+        //push comment id to polls comments array
+        Article.findByIdAndUpdate(
+            comment.article,
+            {'$push': {comments : {'_id' : comment._id } } },
+            function(err,article){
+                article.save();
+            }
+        );
+
+        User.findByIdAndUpdate(
+            comment.user,
+            {'$push': {comments: {'_id': comment._id}}},
+            {safe:true,upsert:true}
+        );
+
+        res.json(comment);
+
+    });
+
+
+/*    var article = req.article;
     var comment = new Comment(req.body);
 
     article.comment = req.comment;
@@ -49,7 +75,7 @@ exports.createComment = function(req, res) {
             res.json(article);
             res.jsonp(comment);
         }
-    });
+    });*/
 };
 
 /**
@@ -57,7 +83,7 @@ exports.createComment = function(req, res) {
  */
 exports.read = function(req, res) {
 	res.json(req.article);
-    res.json(req.comment);
+    //res.json(req.comment);
 };
 
 /**

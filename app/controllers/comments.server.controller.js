@@ -7,32 +7,44 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Comment = mongoose.model('Comment'),
     Article = mongoose.model('Article'),
+    User = mongoose.model('User'),
 	_ = require('lodash');
 
 /**
  * Create a Comment
  */
 exports.create = function(req, res) {
-	var comment = new Comment(req.body);
-    //var article = req.article;
+    var comment = new Comment(req.body);
 
-    //article.comment = req.comment;
+    comment.article = req.article;
+    console.log('req.article: ' + comment.article );
 
-	comment.user = req.user;
-    //comment.article = req.article;
+    comment.user = req.user;
+    console.log('req.user: '+ comment.user);
 
-    //console.log('Firing create comment from comments.server.controller.js');
+    comment.save(function(err,comment){
+        if (err) return res.status(400).send({ message: errorHandler.getErrorMessage(err) });
 
-	comment.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		}
+        //push comment id to articles comments array
+        Article.findByIdAndUpdate(
+            comment.article,
+            {'$push': {comments : {'_id' : comment._id } } },
+        function(err,article){
+                article.save();
+            },
+            console.log('article saved via comment.server.controller\nComment ID: ' + comment + '\nArticle ID: ' + comment.article)
+        );
 
-        res.jsonp(comment);
+        User.findByIdAndUpdate(
+            comment.user,
+            {'$push': {comments: {'_id': comment._id}}},
+            {safe:true},
+            console.log('user updated via comment.server.controller')
+        );
 
-	});
+        res.json(comment);
+
+    });
 
 };
 

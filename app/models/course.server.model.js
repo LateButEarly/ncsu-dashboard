@@ -35,7 +35,13 @@ var CourseSchema = new Schema({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
-	}
+	},
+    professor: {
+        type: String,
+        default: '',
+        required: 'Please fill in Course professor.',
+        trim: true
+    }
     /*
     students: {
         type: Schema.ObjectID,

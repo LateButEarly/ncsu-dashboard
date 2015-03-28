@@ -6,21 +6,6 @@ angular.module('notifications').controller('NotificationsController', ['$scope',
 		$scope.authentication = Authentication;
         $scope.user = Authentication.user;
 
-        switch($scope.authentication.user.role){
-            case 'student':
-                $scope.dashboard = "student-dashboard";
-                break;
-            case 'teacher':
-                $scope.dashboard = "teacher-dashboard";
-                break;
-            case 'admin':
-                $scope.dashboard = "admin-dashboard";
-                break;
-            default:
-                $scope.dashboard = "";
-        }
-
-        // hard-code for now
         $scope.alerts = [
             { type: 'danger', msg: '<strong>Oh snap!</strong> Change a few things up and try submitting again.' },
             { type: 'success', msg: '<strong>Well done!</strong> You successfully read this important alert message.' }
