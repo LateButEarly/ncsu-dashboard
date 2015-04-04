@@ -35,27 +35,17 @@ $ grunt
 
 - [x] Student Dashboard
   - [x] Breadcrumbs
-  - [x] Events (CRUD)
-    - [ ] Comments (CRUD)
+  - [x] Activities (CRUD)
   - [x] Blog (CRUD)
-    - [ ] Comments (CRUD)
+    - [x] Comments (CRUD)
   - [x] Courses (Read-only)
     - [ ] Assignments (Read & Update)
-      - [ ] Upload Documents (CRUD)
-      - [ ] Feedback (Read-only)
-    - [ ] Exams (Read & Update)
-    - [ ] Quizzes (Read & Update)
-    - [ ] Notices (Read-only)
+    - [x] Notices (Read-only)
 
 - [x] Teacher Dashboard
   - [ ] Courses (CRUD)
     - [ ] Assignments (CRUD)
-      - [ ] Documents (Read-only)
-      - [ ] Feedback (CRUD)
-    - [ ] Exams (CRUD)
-    - [ ] Quizzes (CRUD)
-    - [ ] Notices (CRUD)
+    - [x] Notices (CRUD)
 
-- [ ] Admin
-  - [ ] Do it all.
-  
+- [x] Admin
+  - [x] Do it all.
