@@ -43,7 +43,7 @@ $ grunt
     - [x] Notices (Read-only)
 
 - [x] Teacher Dashboard
-  - [ ] Courses (CRUD)
+  - [x] Courses (CRUD)
     - [ ] Assignments (CRUD)
     - [x] Notices (CRUD)
 
