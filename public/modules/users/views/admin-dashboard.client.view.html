@@ -1,49 +1,61 @@
-<section data-ng-controller="AdmindashboardController">
-<!--    <tabset vertical="true" type="pills">
-        <tab>
-            <tab-heading>
-                Overview
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Articles
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Activities
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Courses
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Clubs
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Notifications
-            </tab-heading>
-            Tabcontent
-        </tab>
-        <tab>
-            <tab-heading>
-                Users
-            </tab-heading>
-            Tabcontent
-        </tab>
-    </tabset>-->
-    <div data-ng-repeat="user in users">
-        <p data-ng-bind="user.displayName"></p>
+<section class="container" data-ng-controller="AdmindashboardController">
+
+    <br/>
+
+    <div class="row">
+
+        <div class="col-xs-12 col-md-3">
+
+            <admin-menu></admin-menu>
+
+        </div>
+
+        <div class="col-xs-12 col-md-9">
+
+            <h2>Administration Overview</h2>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-md-3">
+
+                    <div data-ng-controller="ArticlesController" data-ng-init="find()">
+                        <h1>{{ articles.length }}</h1>
+                        <h2><a href="/#!/admin-dashboard/articles">Articles</a></h2>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+
+                    <div data-ng-controller="ActivitiesController" data-ng-init="find()">
+                        <h1>{{ activities.length }}</h1>
+                        <h2><a href="/#!/admin-dashboard/activities">Activities</a></h2>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+
+                    <div data-ng-controller="CoursesController" data-ng-init="find()">
+                        <h1>{{ courses.length }}</h1>
+                        <h2><a href="/#!/admin-dashboard/courses">Courses</a></h2>
+                    </div>
+
+                </div>
+
+                <div class="col-xs-12 col-md-3">
+
+                    <div data-ng-controller="ClubsController" data-ng-init="find()">
+                        <h1>{{ clubs.length }}</h1>
+                        <h2><a href="/#!/admin-dashboard/clubs">Clubs</a></h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
