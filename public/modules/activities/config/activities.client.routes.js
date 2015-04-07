@@ -8,7 +8,8 @@ angular.module('activities').config(['$stateProvider',
 		state('listActivities', {
 			url: '/activities',
                 ncyBreadcrumb: {
-                  label: 'All Activities'
+                    parent: 'myDashboard',
+                    label: 'All Activities'
                 },
 			templateUrl: 'modules/activities/views/list-activities.client.view.html'
 		}).
