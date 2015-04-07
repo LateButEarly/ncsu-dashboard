@@ -29,10 +29,7 @@
                     <div data-ng-repeat="assignment in assignments">
                         <div class="col-md-2 text-center">
                             <!-- if isEditingAssignments = true offer to save changes-->
-                            <a data-ng-click="saveAssignment()" data-ng-show="(isEditing === 'On')"
-                               class="btn btn-success">
-                                <i class="glyphicon glyphicon-ok"></i><span> Save</span>
-                            </a>
+
                             <!-- else show checkbox -->
                             <input data-ng-hide="isEditing === 'On'" type="checkbox"
                                    data-ng-model="assignment.isComplete"/>

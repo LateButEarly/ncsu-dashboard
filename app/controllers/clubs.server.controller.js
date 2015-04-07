@@ -100,10 +100,10 @@ exports.clubByID = function(req, res, next, id) {
  * Club authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-    /*
+
 	if (req.club.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
-	*/
+
 	next();
 };
