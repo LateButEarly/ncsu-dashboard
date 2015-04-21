@@ -16,6 +16,18 @@ var ActivitySchema = new Schema({
 		required: 'Please fill Activity name',
 		trim: true
 	},
+    overview: {
+        type: String,
+        default: '',
+        required: 'Please fill Activity overview',
+        trim: true
+    },
+    date: {
+        type: String,
+        default: 'mm/dd/yyyy',
+        required: 'Please fill Activity date',
+        trim: true
+    },
 	created: {
 		type: Date,
 		default: Date.now

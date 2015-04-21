@@ -5,105 +5,103 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Club = mongoose.model('Club'),
+	Assignment = mongoose.model('Assignment'),
 	_ = require('lodash');
 
 /**
- * Create a Club
+ * Create a Assignment
  */
 exports.create = function(req, res) {
-	var club = new Club(req.body);
-	club.user = req.user;
+	var assignment = new Assignment(req.body);
+	assignment.user = req.user;
 
-	club.save(function(err) {
+	assignment.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(club);
+			res.jsonp(assignment);
 		}
 	});
 };
 
 /**
- * Show the current Club
+ * Show the current Assignment
  */
 exports.read = function(req, res) {
-	res.jsonp(req.club);
+	res.jsonp(req.assignment);
 };
 
 /**
- * Update a Club
+ * Update a Assignment
  */
 exports.update = function(req, res) {
-	var club = req.club ;
+	var assignment = req.assignment ;
 
-	club = _.extend(club , req.body);
+	assignment = _.extend(assignment , req.body);
 
-	club.save(function(err) {
+	assignment.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(club);
+			res.jsonp(assignment);
 		}
 	});
 };
 
 /**
- * Delete an Club
+ * Delete an Assignment
  */
 exports.delete = function(req, res) {
-	var club = req.club ;
+	var assignment = req.assignment ;
 
-	club.remove(function(err) {
+	assignment.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(club);
+			res.jsonp(assignment);
 		}
 	});
 };
 
 /**
- * List of Clubs
+ * List of Assignments
  */
 exports.list = function(req, res) { 
-	Club.find().sort('-created').populate('user', 'displayName').exec(function(err, clubs) {
+	Assignment.find().sort('-created').populate('user', 'displayName').exec(function(err, assignments) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(clubs);
+			res.jsonp(assignments);
 		}
 	});
 };
 
 /**
- * Club middleware
+ * Assignment middleware
  */
-exports.clubByID = function(req, res, next, id) { 
-	Club.findById(id).populate('user', 'displayName').exec(function(err, club) {
+exports.assignmentByID = function(req, res, next, id) { 
+	Assignment.findById(id).populate('user', 'displayName').exec(function(err, assignment) {
 		if (err) return next(err);
-		if (! club) return next(new Error('Failed to load Club ' + id));
-		req.club = club ;
+		if (! assignment) return next(new Error('Failed to load Assignment ' + id));
+		req.assignment = assignment ;
 		next();
 	});
 };
 
 /**
- * Club authorization middleware
+ * Assignment authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-
-	if (req.club.user.id !== req.user.id) {
+	if (req.assignment.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
-
 	next();
 };

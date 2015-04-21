@@ -19,11 +19,11 @@
 
            <div data-ng-show="(authentication.user.role === 'teacher' || authentication.user.role === 'admin' || (authentication.user._id == club.user._id))">
 
-                <a class="btn btn-primary btn-block" href="/#!/clubs/{{club._id}}/edit">
+                <a class="btn btn-default btn-block" href="/#!/clubs/{{club._id}}/edit">
                     <i class="glyphicon glyphicon-edit"></i> Edit Club
                 </a>
 
-                <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#confirm">
+                <a class="btn btn-default btn-block" data-toggle="modal" data-target="#confirm">
                     <i class="glyphicon glyphicon-trash"></i> Delete Club
                 </a>
 
@@ -54,32 +54,6 @@
         </div>
     </div>
 </div>
-    <!-- Angular UI Tab Directive
-    <tabset justified="true">
-
-        <tab>
-            <tab-heading>
-                Dues <i class="glyphicon glyphicon-exclamation-sign"></i>
-            </tab-heading>
-            <div style="margin-top: 30px;" class="row">
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-7 col-md-offset-1">
-
-                    <h4>Club Dues</h4>
-
-                </div>
-            </div>
-        </tab>
-
-        <tab heading="Events">Textbook Content</tab>
-
-        <tab heading="Members"></tab>
-
-    </tabset>
-
-    -->
     <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">

@@ -9,6 +9,22 @@ angular.module('users').config(['$stateProvider',
 			url: '/admin-dashboard',
 			templateUrl: 'modules/users/views/admin-dashboard.client.view.html'
 		}).
+            state('admin-dashboard/articles', {
+                url: '/admin-dashboard/articles',
+                templateUrl: 'modules/users/views/admin-dashboard-articles.client.view.html'
+            }).
+            state('admin-dashboard/activities', {
+                url: '/admin-dashboard/activities',
+                templateUrl: 'modules/users/views/admin-dashboard-activities.client.view.html'
+            }).
+            state('admin-dashboard/courses', {
+                url: '/admin-dashboard/courses',
+                templateUrl: 'modules/users/views/admin-dashboard-courses.client.view.html'
+            }).
+            state('admin-dashboard/clubs', {
+                url: '/admin-dashboard/clubs',
+                templateUrl: 'modules/users/views/admin-dashboard-clubs.client.view.html'
+            }).
 		state('teacher-dashboard', {
 			url: '/teacher-dashboard',
 			templateUrl: 'modules/users/views/teacher-dashboard.client.view.html'

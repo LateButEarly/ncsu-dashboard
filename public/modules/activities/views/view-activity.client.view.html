@@ -4,24 +4,56 @@
 
     <div ncy-breadcrumb></div>
 
-	<div class="page-header">
-		<h1 data-ng-bind="activity.name"></h1>
-	</div>
-    <!-- ((authentication.user) && (authentication.user._id == activity.user._id)) -->
-	<div class="pull-right" data-ng-show="(authentication.user)">
-		<a class="btn btn-primary" href="/#!/activities/{{activity._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="activity.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="activity.user.displayName"></span>
-		</em>
-	</small>
+    <div class="page-header">
+        <h2>{{activity.name}} <small>{{activity.date}}</small></h2>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <img style="margin:0 auto;" class="img-responsive" src="/modules/activities/imgs/activity_map.png"/>
+
+            <!-- Apply/Donate Button -->
+            <div style="margin: 35px auto;" class="btn-group-justified">
+                <a href="#" class="btn btn-primary">RSVP</a>
+            </div>
+
+            <a class="btn btn-default btn-block" href="/#!/activities/{{activity._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i> Edit Activity
+            </a>
+
+            <a class="btn btn-default btn-block" data-toggle="modal" data-target="#confirm">
+                <i class="glyphicon glyphicon-trash"></i> Delete Activity
+            </a>
+
+        </div>
+
+        <div class="col-md-7 col-md-offset-1">
+
+            <h4>Overview</h4>
+
+            <p data-ng-bind-html="activity.overview"></p>
+
+        </div>
+    </div>
+
+    <div id="confirm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+         aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        <i class="glyphicon glyphicon-warning-sign"> </i><span>&nbsp;&nbsp; Are you sure?</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <a class="btn btn-primary btn-block" data-ng-click="remove();">Yes, delete</a>
+                    <a type="button" class="btn btn-default btn-block" data-dismiss="modal">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
