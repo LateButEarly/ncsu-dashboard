@@ -28,6 +28,7 @@ exports.create = function(req, res) {
 /**
  * Create a comment
  */
+/*
 exports.createComment = function(req, res) {
 
     var comment = new Comment(req.body);
@@ -58,7 +59,7 @@ exports.createComment = function(req, res) {
     });
 
 
-/*    var article = req.article;
+    var article = req.article;
     var comment = new Comment(req.body);
 
     article.comment = req.comment;
@@ -75,8 +76,9 @@ exports.createComment = function(req, res) {
             res.json(article);
             res.jsonp(comment);
         }
-    });*/
+    });
 };
+*/
 
 /**
  * Show the current article

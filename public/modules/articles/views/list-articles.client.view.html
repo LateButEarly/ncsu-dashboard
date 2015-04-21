@@ -8,12 +8,7 @@
 
         <div class="col-md-4">
             <div class="well">
-                <div class="input-group">
-                    <input type="text" class="form-control" data-ng-model="search.title" placeholder="Search">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                      </span>
-                </div><!-- /input-group -->
+                    <input type="text" class="form-control" data-ng-model="search.title" placeholder="Start typing to search..">
             </div>
 
             <student-menu></student-menu>
@@ -21,13 +16,13 @@
         </div>
 
         <div class="col-md-8">
-
+<!--
             <div style="margin-top:0!important;" class="page-header">
                 <h1 style="margin-top:0!important;">Student & Teacher Articles</h1>
             </div>
-
+-->
             <div data-ng-repeat="article in articles | filter:search:strict" class="thumbnail">
-                <a data-ng-href="#!/articles/{{article._id}}"><img ng-src="{{article.imageUrl}}"/></a>
+                <a data-ng-href="#!/articles/{{article._id}}"><img style="width: 100%!important;" ng-src="{{article.imageUrl}}"/></a>
 
                     <a data-ng-href="#!/articles/{{article._id}}"><h4 data-ng-bind="article.title"></h4></a>
 

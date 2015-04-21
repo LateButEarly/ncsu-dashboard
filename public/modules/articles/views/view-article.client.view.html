@@ -36,7 +36,7 @@
 
             <div class="page-header">
                 <h1 data-ng-bind="article.title"></h1>
-                <span style="font-weight: bold;" data-ng-bind="article.created | date:'mediumDate'"></span>
+                <span>Posted on </span><span data-ng-bind="article.created | date:'mediumDate'"></span><span> by {{article.user.displayName}}</span>
                 <em class="pull-right">
                     <a ng-href="/#!/articles/{{article._id}}#comments">{{comments.length}} Comments</a>
                 </em>

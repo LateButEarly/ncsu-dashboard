@@ -56,6 +56,7 @@ angular.module('notifications').controller('NotificationsController', ['$scope',
 		};
 
 		// Remove existing Notification
+        /*
 		$scope.remove = function(notification) {
 			if ( notification ) { 
 				notification.$remove();
@@ -71,6 +72,7 @@ angular.module('notifications').controller('NotificationsController', ['$scope',
 				});
 			}
 		};
+		*/
 
 		// Update existing Notification
 		$scope.update = function() {
