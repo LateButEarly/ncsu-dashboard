@@ -19,7 +19,6 @@ var ActivitySchema = new Schema({
     overview: {
         type: String,
         default: '',
-        required: 'Please fill Activity overview',
         trim: true
     },
     date: {

@@ -30,15 +30,15 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
                 switch($scope.authentication.user.role){
                     case 'student':
                         $location.path('/student-dashboard');
-                        window.location.reload();
+                        //window.location.reload();
                         break;
                     case 'teacher':
                         $location.path('/teacher-dashboard');
-                        window.location.reload();
+                        //window.location.reload();
                         break;
                     case 'admin':
                         $location.path('/admin-dashboard');
-                        window.location.reload();
+                        //window.location.reload();
                         break;
                     default:
                         $location.path('/');
